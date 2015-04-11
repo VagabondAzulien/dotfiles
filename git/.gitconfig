@@ -1,0 +1,18 @@
+#============================#
+# gitconfig file for niblock #
+#============================#
+
+# General Settings:
+#    Show me absolute paths, not relative paths
+#    Link to a global excludes file
+[status]
+	relativePaths = false
+
+[core]
+	excludesfile = ~/.gitignore
+
+# User Settings
+#    User details
+[user]
+	name = Bill Niblock
+	email = bill_niblock@yahoo.com
