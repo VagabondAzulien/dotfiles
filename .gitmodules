@@ -1,0 +1,12 @@
+[submodule "vim/vim/bundle/vim-fugitive"]
+	path = vim/vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/vim/bundle/vim-airline"]
+	path = vim/vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim/vim/bundle/vim-sneak"]
+	path = vim/vim/bundle/vim-sneak
+	url = https://github.com/justinmk/vim-sneak
+[submodule "vim/vim/bundle/vim-pathogen"]
+	path = vim/vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen

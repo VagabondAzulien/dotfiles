@@ -12,6 +12,7 @@ set showcmd
 
 " Enables addons via Pathogen
 " Add-ons go in ~/.vim/bundle/
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 " Necessary for Syntax hilighting
