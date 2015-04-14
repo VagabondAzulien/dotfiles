@@ -10,3 +10,6 @@
 [submodule "vim/vim/bundle/vim-pathogen"]
 	path = vim/vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
+[submodule "vim/vim/bundle/vim-vinegar"]
+	path = vim/vim/bundle/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar
