@@ -16,8 +16,10 @@ Additionally, I have several extensions, as submodules, in .vim/bundle:
 
 ###Utilization
 To use these configuration, perform the following steps
+
 1. Copy vimrc to .vimrc in your home directory
 > cp vimrc ~/.vimrc
+
 2. Copy the vim directory to .vim in your home directory
 > cp -r vim ~/.vim
 
@@ -25,6 +27,6 @@ This process is currently unautomated, and as such any updates to this
 repository will need to be manually copied as above.
 
 ####To-Do
-[ ] Automate utilization step (considering post-fetch Git hook)
-[ ] Customize Airline more
+* [ ] Automate utilization step (considering post-fetch Git hook)
+* [ ] Customize Airline more
 
