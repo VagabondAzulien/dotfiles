@@ -21,7 +21,9 @@ To use these configuration, perform the following steps
 
 1. Copy or sim-link vimrc to .vimrc in your home directory
 > cp vimrc ~/.vimrc
+>
 > -+ or +-
+>
 > ln ~/.vimrc vimrc
 
 2. Copy the vim directory to .vim in your home directory
