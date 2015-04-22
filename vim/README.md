@@ -19,7 +19,7 @@ Additionally, I have several extensions, as submodules, in .vim/bundle:
 ###Utilization
 To use these configuration, perform the following steps
 
-1. Copy or sim-link vimrc to .vimrc in your home directory
+1. Copy or sym-link vimrc to .vimrc in your home directory
 > cp vimrc ~/.vimrc
 >
 > -+ or +-
