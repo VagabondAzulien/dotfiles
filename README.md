@@ -2,7 +2,10 @@
 
 Configuration files (often called dot-files because they start with a ".") for the applications I use on a regular basis.
 
-
+##To-Do
+* [ ] Implement [dotbot](https://github.com/anishathalye/dotbot) for automation.
+* [ ] irssi config files
+* [ ] shell config files
 
 ####License
 These files are licensed under the [WTFPL](http://www.wtfpl.net/), the full
