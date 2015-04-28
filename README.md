@@ -1,9 +1,33 @@
 #Dot Files
 
-Configuration files (often called dot-files because they start with a ".") for the applications I use on a regular basis.
+Configuration files (often called dot-files because they start with a ".") for
+the applications I use on a regular basis. 
+
+No special pre-requisites, that I'm aware of. The `install` script requires
+Python. Of course, the configuration files require the related applications
+to be applicable.
+
+More details about specific application configurations can be found in their
+respective directories.
+
+##dotbot
+To assist with organization, I utilize 
+[dotbot](https://github.com/anishathalye/dotbot) for automation. 
+
+##Installation
+To integrate *all* dotfiles in this repo:
+
+> 1. git clone git@github.com:VagabondAzulien/dotfiles.git
+>
+> 2. cd dotfiles
+>
+> 3. ./install
+
+##Applications Configured
+* Vim [ vim/vim/ => ~/.vim ][ vim/vimrc => ~/.vimrc ]
+* Git [ git/gitconfig => ~/.gitconfig ]
 
 ##To-Do
-* [ ] Implement [dotbot](https://github.com/anishathalye/dotbot) for automation.
 * [ ] irssi config files
 * [ ] shell config files
 
@@ -24,4 +48,3 @@ license text of which can be found below.
 > TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
 >
 >     0. You just DO WHAT THE FUCK YOU WANT TO.
-

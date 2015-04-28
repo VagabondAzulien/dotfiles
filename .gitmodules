@@ -13,3 +13,6 @@
 [submodule "vim/vim/bundle/vim-vinegar"]
 	path = vim/vim/bundle/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
