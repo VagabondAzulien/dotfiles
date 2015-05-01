@@ -25,7 +25,7 @@ To integrate *all* dotfiles in this repo:
 
 ##Applications Configured
 * Vim [ vim/vim/ => ~/.vim ][ vim/vimrc => ~/.vimrc ]
-* Git [ git/gitconfig => ~/.gitconfig ]
+* Git [ git/gitconfig => ~/.gitconfig ][ git/gitignore => ~/.gitignore ]
 
 ##To-Do
 * [ ] irssi config files
