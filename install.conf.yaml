@@ -4,7 +4,9 @@
      ~/.dotfiles: ''
      ~/.vim: vim/vim/
      ~/.vimrc: vim/vimrc
-     ~/.fonts: vim/fonts/
+     ~/.fonts/DroidSansMonoDottedPowerline.ttf:
+          create: true
+          path: vim/fonts/DroidFont.ttf
      ~/.gitconfig: git/gitconfig
      ~/.gitignore: git/gitignore
 

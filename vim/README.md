@@ -18,7 +18,7 @@ Additionally, I have several extensions, as submodules, in .vim/bundle:
 
 ###Font
 I prefer using the Droid Monospace font for powerline, which is bundled here for
-convenience. The font is licensed under the Apache License, Version 2.0.
+convenience.
 
 ####To-Do
 * [ ] Customize Airline more.

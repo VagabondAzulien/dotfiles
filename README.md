@@ -24,14 +24,14 @@ To integrate *all* dotfiles in this repo:
 > 3. ./install
 
 ##Applications Configured
-* Vim [ vim/vim/ => ~/.vim ][ vim/vimrc => ~/.vimrc ]
-* Git [ git/gitconfig => ~/.gitconfig ][ git/gitignore => ~/.gitignore ]
+* Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]\[ vim/fonts/\* => ~/.fonts \]
+* Git \[ git/gitconfig => ~/.gitconfig \]\[ git/gitignore => ~/.gitignore \]
 
 ##To-Do
 * [ ] irssi config files
 * [ ] shell config files
 
-####License
+####Licenses
 Droid Monospace font licensed under the [Apache License, Version
 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
