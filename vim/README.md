@@ -16,10 +16,13 @@ Additionally, I have several extensions, as submodules, in .vim/bundle:
   browser.
 * and [Pathogen](https://github.com/tpope/vim-pathogen) to do the hard work.
 
+###Font
+I prefer using the Droid Monospace font for powerline, which is bundled here for
+convenience. The font is licensed under the Apache License, Version 2.0.
+
 ####To-Do
 * [ ] Customize Airline more.
 * [ ] Consider adding [gist-vim](https://github.com/mattn/gist-vim) due to
   prevalence of Gist at work
 * [ ] Consider adding [vim-notes](https://github.com/xolox/vim-notes) and/or
   [vimwiki](https://github.com/vimwiki/vimwiki) for notes
-

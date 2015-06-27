@@ -32,7 +32,13 @@ To integrate *all* dotfiles in this repo:
 * [ ] shell config files
 
 ####License
-These files are licensed under the [WTFPL](http://www.wtfpl.net/), the full
+Droid Monospace font licensed under the [Apache License, Version
+2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
+
+Dotbot is (c) Anish Athalye, and licensed under the [MIT
+License](https://github.com/anishathalye/dotbot/blob/master/LICENSE.md).
+
+All other files are licensed under the [WTFPL](http://www.wtfpl.net/), the full
 license text of which can be found below.
 
 > **DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE**

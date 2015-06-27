@@ -4,8 +4,10 @@
      ~/.dotfiles: ''
      ~/.vim: vim/vim/
      ~/.vimrc: vim/vimrc
+     ~/.fonts: vim/fonts/
      ~/.gitconfig: git/gitconfig
      ~/.gitignore: git/gitignore
 
 - shell:
      - [git submodule update --init --recursive, Installing submodules]
+     - [fc-cache -f ~/.fonts, Resetting font cache]
