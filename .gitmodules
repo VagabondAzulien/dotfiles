@@ -16,3 +16,6 @@
 [submodule "dotbot"]
      path = dotbot
      url = https://github.com/anishathalye/dotbot
+[submodule "vim/vim/bundle/vim-template"]
+	path = vim/vim/bundle/vim-template
+	url = https://github.com/ap/vim-templates.git
