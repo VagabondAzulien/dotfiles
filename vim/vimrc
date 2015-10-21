@@ -7,6 +7,9 @@
 " https://stackoverflow.com/questions/5845557/in-a-vimrc-is-set-nocompatible-completely-useless
 set nocompatible
 
+" Map Leader key
+let mapleader = ","
+
 " Shows you which commands you're typing
 set showcmd
 
