@@ -12,4 +12,4 @@
 
 - shell:
      - [git submodule update --init --recursive, Installing submodules]
-     - [fc-cache -f ~/.fonts, Resetting font cache]
+       #     - [fc-cache -f ~/.fonts, Resetting font cache]
