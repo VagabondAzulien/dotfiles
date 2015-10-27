@@ -1,0 +1,6 @@
+#Local Gitignore for Repo#
+##########################
+
+#Ignore the vim bundle directory, thanks to Vundle
+vim/vim/bundle
+
