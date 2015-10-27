@@ -24,7 +24,8 @@ To integrate *all* dotfiles in this repo:
 > 3. ./install
 
 ##Applications Configured
-* Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]
+* Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]\[ vim/vimrc.bundles =>
+  ~/.vimrc.bundles \]
 * Git \[ git/gitconfig => ~/.gitconfig \]\[ git/gitignore => ~/.gitignore \]
 * Tmux \[ tmux/tmux.conf => ~/.tmux.conf \]
 
