@@ -19,3 +19,6 @@
 [submodule "vim/vim/bundle/vim-template"]
 	path = vim/vim/bundle/vim-template
 	url = https://github.com/ap/vim-templates.git
+[submodule "vim/vim/bundle/vimwiki"]
+	path = vim/vim/bundle/vimwiki
+	url = https://github.com/vimwiki/vimwiki

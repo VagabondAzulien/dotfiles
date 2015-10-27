@@ -1,11 +1,18 @@
-"========================"
-" vimrc file for niblock "
-"========================"
+"#========================#"
+"# vimrc file for niblock #"
+"#========================#"
 
-" +++ Settings +++
+" Type :so % to refresh .vimrc after making changes
+
+"######
+"# Settings
+"##
 
 " https://stackoverflow.com/questions/5845557/in-a-vimrc-is-set-nocompatible-completely-useless
 set nocompatible
+
+" Auto-reload files changed outside Vim
+set autoread
 
 " Map Leader key
 let mapleader = ","
@@ -26,8 +33,9 @@ let g:airline_powerline_fonts = 1
 syntax on
 filetype plugin indent on
 
-" Enable line numbers
+" Enable line numbers, and make them relative
 set number
+set rnu
 
 " Indendation modifications
 " Auto indent; set spacing; use spaces
@@ -41,6 +49,7 @@ set softtabstop=5
 " Set width; word wrap; scroll mods
 set scrolloff=5
 set tw=80
+set colorcolumn=+1
 set wrap
 
 " Enable auto-completion for vim commands
@@ -56,11 +65,34 @@ set hlsearch
 " Set color scheme... duh...
 colorscheme desert
 
-" +++ Mappings +++
+"######
+"# Mappings
+"##
 
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
+" Making moving up/down work on wrapped lines of text
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> ^ g^
+nnoremap <silent> $ g$
+
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
+
+" Toggle relative numbering
+nnoremap <silent> <leader>n :set rnu!<CR>
+
+" Easy-toggle nohlsearch
+nnoremap <silent> <leader>s :set nohlsearch!<CR>
+
+" Edit dotfiles with <leader>d
+"    v is for vim
+nnoremap <silent> <leader>dv :tabnew ~/.vimrc<CR>
+"    b is for bash
+nnoremap <silent> <leader>db :tabnew ~/.bashrc<CR>
+"    t is for tmux
+nnoremap <silent> <leader>dt :tabnew ~/.tmux.conf<CR>
+"    d is for dotfiles install script
+nnoremap <silent> <leader>dd :tabnew ~/.dotfiles/install.conf.yaml<CR>
+
+" Remap ESC in insert mode
+inoremap jk <esc>
