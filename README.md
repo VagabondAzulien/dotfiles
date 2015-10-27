@@ -24,17 +24,15 @@ To integrate *all* dotfiles in this repo:
 > 3. ./install
 
 ##Applications Configured
-* Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]\[ vim/fonts/\* => ~/.fonts \]
+* Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]
 * Git \[ git/gitconfig => ~/.gitconfig \]\[ git/gitignore => ~/.gitignore \]
+* Tmux \[ tmux/tmux.conf => ~/.tmux.conf \]
 
 ##To-Do
 * [ ] irssi config files
 * [ ] shell config files
 
-####Licenses
-Droid Monospace font licensed under the [Apache License, Version
-2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
-
+#Licenses
 Dotbot is (c) Anish Athalye, and licensed under the [MIT
 License](https://github.com/anishathalye/dotbot/blob/master/LICENSE.md).
 

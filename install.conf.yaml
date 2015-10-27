@@ -4,17 +4,9 @@
      ~/.dotfiles: ''
      ~/.vim: vim/vim/
      ~/.vimrc: vim/vimrc
-     #~/.fonts/DroidSansMonoDottedPowerline.ttf:
-     #     create: true
-     #     path: vim/fonts/DroidFont.ttf
      ~/.gitconfig: git/gitconfig
      ~/.gitignore: git/gitignore
      ~/.tmux.conf: tmux/tmux.conf
 
 - shell:
      - [git submodule update --init --recursive, Installing submodules]
-<<<<<<< HEAD
-     # - [fc-cache -f ~/.fonts, Resetting font cache]
-=======
-       #     - [fc-cache -f ~/.fonts, Resetting font cache]
->>>>>>> e998cc17100c58876756e3f53304188cb0e22ca2
