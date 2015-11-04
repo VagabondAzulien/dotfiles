@@ -87,7 +87,7 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap <silent> <leader>n :set rnu!<CR>
 
 " Easy-toggle nohlsearch
-nnoremap <silent> <leader>s :set nohlsearch!<CR>
+nnoremap <silent> <leader>h :set nohlsearch!<CR>
 
 " Edit dotfiles with <leader>d
 "    v is for vim
@@ -101,3 +101,6 @@ nnoremap <silent> <leader>dd :tabnew ~/.dotfiles/install.conf.yaml<CR>
 
 " Remap ESC in insert mode
 inoremap jk <esc>
+
+" Toggle spell-check
+nmap <silent> <leader>s :set spell!<CR>
