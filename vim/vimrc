@@ -104,3 +104,6 @@ inoremap jk <esc>
 
 " Toggle spell-check
 nmap <silent> <leader>s :set spell!<CR>
+
+" Remove Trailing Whitespaace
+nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
