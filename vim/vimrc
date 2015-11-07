@@ -91,11 +91,11 @@ nnoremap <silent> <leader>h :set nohlsearch!<CR>
 
 " Edit dotfiles with <leader>d
 "    v is for vim
-nnoremap <silent> <leader>dv :tabnew ~/.vimrc<CR>
+nnoremap <silent> <leader>dv :tabnew ~/.dotfiles/vim/vimrc<CR>
 "    b is for bash
-nnoremap <silent> <leader>db :tabnew ~/.bashrc<CR>
+"nnoremap <silent> <leader>db :tabnew ~/.dotfiles/bash/bashrc<CR>
 "    t is for tmux
-nnoremap <silent> <leader>dt :tabnew ~/.tmux.conf<CR>
+nnoremap <silent> <leader>dt :tabnew ~/.dotfiles/tmux/tmux.conf<CR>
 "    d is for dotfiles install script
 nnoremap <silent> <leader>dd :tabnew ~/.dotfiles/install.conf.yaml<CR>
 
