@@ -5,38 +5,21 @@
 " Type :so % to refresh .vimrc after making changes
 
 "######
-"# Settings
+"# General Settings
 "##
 
-" https://stackoverflow.com/questions/5845557/in-a-vimrc-is-set-nocompatible-completely-useless
+" Be IMproved ( Why? https://goo.gl/2RiJoo )
 set nocompatible
+
+" Necessary for Syntax hilighting and cool stuff
+syntax on
+filetype plugin indent on
 
 " Auto-reload files changed outside Vim
 set autoread
 
-" Map Leader key
-let mapleader = ","
-
 " Shows you which commands you're typing
 set showcmd
-
-" Enables addons via Pathogen
-" Add-ons go in ~/.vim/bundle/
-" runtime bundle/vim-pathogen/autoload/pathogen.vim
-" execute pathogen#infect()
-
-" Load plugins with Vundle
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
-endif
-
-" Airline configuration
-set laststatus=2
-let g:airline_powerline_fonts = 1
-
-" Necessary for Syntax hilighting
-syntax on
-filetype plugin indent on
 
 " Enable line numbers, and make them relative
 set number
@@ -54,7 +37,7 @@ set softtabstop=5
 " Set width; word wrap; scroll mods
 set scrolloff=5
 set tw=80
-set colorcolumn=+1
+set colorcolumn
 set wrap
 
 " Enable auto-completion for vim commands
@@ -67,12 +50,28 @@ set wildmode:longest:full,full
 set incsearch
 set hlsearch
 
-" Set color scheme... duh...
+" Set default/backup colorscheme
 colorscheme desert
+
+"######
+"# Plugins
+"###
+
+" Old Way: Pathogen, add-ons go in ~/.vim/bundle/
+"    runtime bundle/vim-pathogen/autoload/pathogen.vim
+"    execute pathogen#infect()
+
+" New Way: Vim-Plug, add-ons configured in .vimrc.bundles
+     if filereadable(expand("~/.vimrc.bundles"))
+          source ~/.vimrc.bundles
+     endif
 
 "######
 "# Mappings
 "##
+
+" Map Leader key
+let mapleader = ","
 
 " Making moving up/down work on wrapped lines of text
 nnoremap <silent> j gj
@@ -90,14 +89,15 @@ nnoremap <silent> <leader>n :set rnu!<CR>
 nnoremap <silent> <leader>h :set nohlsearch!<CR>
 
 " Edit dotfiles with <leader>d
-"    v is for vim
-nnoremap <silent> <leader>dv :tabnew ~/.dotfiles/vim/vimrc<CR>
-"    b is for bash
-"nnoremap <silent> <leader>db :tabnew ~/.dotfiles/bash/bashrc<CR>
-"    t is for tmux
-nnoremap <silent> <leader>dt :tabnew ~/.dotfiles/tmux/tmux.conf<CR>
-"    d is for dotfiles install script
-nnoremap <silent> <leader>dd :tabnew ~/.dotfiles/install.conf.yaml<CR>
+"  v is for vim
+     nnoremap <silent> <leader>dv :tabnew ~/.dotfiles/vim/vimrc<CR>
+     nnoremap <silent> <leader>dp :tabnew ~/.dotfiles/vim/vimrc.bundles<CR>
+"  b is for bash
+"    nnoremap <silent> <leader>db :tabnew ~/.dotfiles/bash/bashrc<CR>
+"  t is for tmux
+     nnoremap <silent> <leader>dt :tabnew ~/.dotfiles/tmux/tmux.conf<CR>
+"  d is for dotfiles install script
+     nnoremap <silent> <leader>dd :tabnew ~/.dotfiles/install.conf.yaml<CR>
 
 " Remap ESC in insert mode
 inoremap jk <esc>

@@ -8,7 +8,7 @@ My vim configuration is relatively straight forward.
 * Relative numbering, with mapping to quickly swap
 
 ###Bundles File
-The vimrc.bundles file stores the plugin information for Vundle. Currently, I
+The vimrc.bundles file stores the plugin information for Vim-Plug. Currently, I
 use the following plugins:
 * [Fugitive](https://github.com/tpope/vim-fugitive) for nice Git integration.
 * [Airline](https://github.com/bling/vim-airline) to look nice, but not garish.
@@ -18,8 +18,14 @@ use the following plugins:
 * [Templates](https://github.com/ap/vim-templates.git) for easy templates.
 * [vimwiki](https://github.com/vimwiki/vimwiki) for info, diary and notes.
 
+###Pending Plugins
+The following should be eventually installed and configured properly:
+* Syntastic
+* vim-startify
+* vim-dispatch
+
 ####To-Do
-* [ ]  (Optional) Customize Airline more.
+* [ ] Customize Airline more (Optional)
 * [ ] Consider adding [gist-vim](https://github.com/mattn/gist-vim) due to
   prevalence of Gist at work
 * [ ] Look into [ctrlp](https://github.com/kien/ctrlp.vim) for more awesome
