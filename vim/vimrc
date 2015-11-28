@@ -37,7 +37,7 @@ set softtabstop=5
 " Set width; word wrap; scroll mods
 set scrolloff=5
 set tw=80
-set colorcolumn
+set colorcolumn=80
 set wrap
 
 " Enable auto-completion for vim commands

@@ -12,7 +12,17 @@
 " ###
 
 " ######
-" # Fetch
+" # Fetch & Install Self
+" ###
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+     autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+" ######
+" # Fetch & Install Plugins
 " ###
 
 call plug#begin('~/.vim/bundle')
@@ -35,3 +45,8 @@ call plug#end()
 " Airline configuration
 set laststatus=2
 let g:airline_powerline_fonts = 1
+
+" Startify configs
+let g:startify_files_number = 5
+let g:startify_change_to_dir = 1
+
