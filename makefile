@@ -5,6 +5,7 @@
      build-default \
      build-simple \
      install-vim-config \
+     install-vim-dir \
      install-vim-plugin \
      install-git \
      install-tmux \
@@ -19,11 +20,12 @@ help:			## Display this menu
         awk 'BEGIN {FS = ":.*?## "}; {printf "%-25s %s\n", $$1, $$2}'
 
 link-dotfiles:		## Create dotfiles link in Home directory
-	ln -s -- "$(CURDIR)" "$(HOME)"/.dotfiles/
+	ln -s -- "$(CURDIR)" "$(HOME)"/.dotfiles
 
 build-default:		## Create default environment, using all dotfiles
 build-default: link-dotfiles \
      install-vim-config \
+     install-vim-dir \
      install-vim-plugin \
      install-git \
      install-tmux \
@@ -41,12 +43,15 @@ install-vim-config:	## Create vimrc file in Home directory
 install-vim-plugin:	## Create vimrc-plugins (Plugin file) in Home directory
 	ln -s -- "$(CURDIR)"/vim/vimrc-plugins "$(HOME)"/.vimrc-plugins
 
+install-vim-dir:	## Create vim directory in Home directory
+	ln -s -- "$(CURDIR)"/vim/vim/ "$(HOME)"/.vim
+
 install-git:		## Create git config and ignore files in Home directory
 	ln -s -- "$(CURDIR)"/git/gitconfig "$(HOME)"/.gitconfig
 	ln -s -- "$(CURDIR)"/git/gitignore "$(HOME)"/.gitignore
 
 install-tmux:		## Create tmux config file in Home directory
-	ln -s -- "$(CURDIR)"/tmux/tmux.config "$(HOME)"/.tmux.config
+	ln -s -- "$(CURDIR)"/tmux/tmux.conf "$(HOME)"/.tmux.conf
 
 install-bash-config:	## Create bash config file in Home directory
 

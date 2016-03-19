@@ -3,25 +3,20 @@
 Configuration files (often called dot-files because they start with a ".") for
 the applications I use on a regular basis. 
 
-No special pre-requisites, that I'm aware of. The `install` script requires
-Python. Of course, the configuration files require the related applications
-to be applicable.
-
 More details about specific application configurations can be found in their
 respective directories.
 
-##dotbot
-To assist with organization, I utilize 
-[dotbot](https://github.com/anishathalye/dotbot) for automation. 
+###Requirements
+
+You'll need `make` for the automated linking of the dotfiles.
+Obviously you'll need the related program for each config file to be applicable.
 
 ##Installation
-To integrate *all* dotfiles in this repo:
-
 > 1. git clone git@github.com:VagabondAzulien/dotfiles.git
 >
 > 2. cd dotfiles
 >
-> 3. ./install
+> 3. Type `make` to see your options
 
 ##Applications Configured
 * Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]\[ vim/vimrc.bundles =>
@@ -31,13 +26,11 @@ To integrate *all* dotfiles in this repo:
 
 ##To-Do
 * [ ] irssi config files
-* [ ] shell config files
+* [ ] Bash config files
+* [ ] Improve makefile
 
-#Licenses
-Dotbot is (c) Anish Athalye, and licensed under the [MIT
-License](https://github.com/anishathalye/dotbot/blob/master/LICENSE.md).
-
-All other files are licensed under the [WTFPL](http://www.wtfpl.net/), the full
+##License
+All files are licensed under the [WTFPL](http://www.wtfpl.net/), the full
 license text of which can be found below.
 
 > **DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE**
