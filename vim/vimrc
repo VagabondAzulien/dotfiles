@@ -37,7 +37,7 @@ set softtabstop=5
 " Set width; word wrap; scroll mods
 set scrolloff=5
 set tw=80
-set colorcolumn=80
+" set colorcolumn=80
 set wrap
 
 " Enable auto-completion for vim commands
@@ -61,9 +61,9 @@ colorscheme desert
 "    runtime bundle/vim-pathogen/autoload/pathogen.vim
 "    execute pathogen#infect()
 
-" New Way: Vim-Plug, add-ons configured in .vimrc.bundles
-     if filereadable(expand("~/.vimrc.bundles"))
-          source ~/.vimrc.bundles
+" New Way: Vim-Plug, add-ons configured in .vimrc-plugins
+     if filereadable(expand("~/.vimrc-plugins"))
+          source ~/.vimrc-plugins
      endif
 
 "######
@@ -91,7 +91,7 @@ nnoremap <silent> <leader>h :set nohlsearch!<CR>
 " Edit dotfiles with <leader>d
 "  v is for vim
      nnoremap <silent> <leader>dv :tabnew ~/.dotfiles/vim/vimrc<CR>
-     nnoremap <silent> <leader>dp :tabnew ~/.dotfiles/vim/vimrc.bundles<CR>
+     nnoremap <silent> <leader>dp :tabnew ~/.dotfiles/vim/vimrc-plugins<CR>
 "  b is for bash
 "    nnoremap <silent> <leader>db :tabnew ~/.dotfiles/bash/bashrc<CR>
 "  t is for tmux
