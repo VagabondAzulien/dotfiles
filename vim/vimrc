@@ -96,8 +96,8 @@ nnoremap <silent> <leader>h :set nohlsearch!<CR>
 "    nnoremap <silent> <leader>db :tabnew ~/.dotfiles/bash/bashrc<CR>
 "  t is for tmux
      nnoremap <silent> <leader>dt :tabnew ~/.dotfiles/tmux/tmux.conf<CR>
-"  d is for dotfiles install script
-     nnoremap <silent> <leader>dd :tabnew ~/.dotfiles/install.conf.yaml<CR>
+"  m is for makefile
+     nnoremap <silent> <leader>dm :tabnew ~/.dotfiles/makefile<CR>
 
 " Remap ESC in insert mode
 inoremap jk <esc>
