@@ -13,4 +13,4 @@ buffForm="#[fg=green]<][ $buffTime ][> "
 utcForm="#[fg=blue][ $utcTime ][> "
 bangForm="#[fg=magenta][ $bangTime ][>>"
 
-echo $caliForm$buffForm$utcForm$bangForm" "
+echo "$caliForm""$buffForm""$utcForm""$bangForm"" "

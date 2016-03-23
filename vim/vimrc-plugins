@@ -31,10 +31,15 @@ call plug#begin('~/.vim/bundle')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'bling/vim-airline'
-Plug 'justinmk/vim-sneak'
-Plug 'ap/vim-templates'
+" Plug 'justinmk/vim-sneak'
+" Plug 'ap/vim-templates'
 Plug 'vimwiki/vimwiki'
 Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-surround'
+
+" Syntax Related
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -50,3 +55,10 @@ let g:airline_powerline_fonts = 1
 let g:startify_files_number = 5
 let g:startify_change_to_dir = 1
 
+" Syntastic configs
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+let g:syntastic_sh_checkers = [ 'shellcheck', 'sh' ]
