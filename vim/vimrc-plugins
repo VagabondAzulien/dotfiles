@@ -30,16 +30,20 @@ call plug#begin('~/.vim/bundle')
 " Current list of plugins
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
-Plug 'bling/vim-airline'
-" Plug 'justinmk/vim-sneak'
-" Plug 'ap/vim-templates'
-Plug 'vimwiki/vimwiki'
-Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
+" Plug 'justinmk/vim-sneak'
+" Plug 'ap/vim-templates'
+
+
+" Appearance Related
+Plug 'mhinz/vim-startify'
+Plug 'bling/vim-airline'
 
 " Syntax Related
 Plug 'scrooloose/syntastic'
+Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
 
