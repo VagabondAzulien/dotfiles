@@ -1,0 +1,22 @@
+#!/bin/bash
+
+######
+# Sojourner: My Default Session
+#    Triple-pane Window
+#         Pane 1: Vim, primarily for Vimwiki Usage
+#         Pane 2: Large console
+#         Pane 3: Small console
+###
+
+tmux has-session -t Sojourner &>/dev/null
+
+if [ $? != 0 ]
+then
+     tmux new-session -s Sojourner -d
+     tmux send-keys -t Sojourner 'vim' C-m
+     tmux split-window -t Sojourner -h
+     tmux split-window -t Sojourner:1.2 -v -p 30
+     tmux select-pane -t Sojourner:1.1
+fi
+
+tmux attach -t Sojourner
