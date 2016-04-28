@@ -33,6 +33,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-unimpaired'
 " Plug 'justinmk/vim-sneak'
 " Plug 'ap/vim-templates'
 

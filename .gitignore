@@ -1,6 +1,7 @@
 #Local Gitignore for Repo#
 ##########################
 
-#Ignore the vim bundle directory, thanks to Vundle
+# Ignore Plug-related directories
+vim/vim/autoload
 vim/vim/bundle
 
