@@ -73,11 +73,21 @@ colorscheme desert
 " Map Leader key
 let mapleader = ","
 
-" Making moving up/down work on wrapped lines of text
+" Make moving up/down work on wrapped lines of text
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
+
+" Shift between tabs with Shift+h/l
+nnoremap <silent> <S-l> gt
+nnoremap <silent> <S-h> gT
+
+" Move between splits with CTRL+h/j/k/l
+nnoremap <silent> <C-l> <C-w>l
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-h> <C-w>h
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
