@@ -1,22 +1,30 @@
 #!/bin/bash
-
 ######
 # Sojourner: My Default Session
-#    Triple-pane Window
-#         Pane 1: Vim, primarily for Vimwiki Usage
-#         Pane 2: Large console
-#         Pane 3: Small console
 ###
 
 tmux has-session -t Sojourner &>/dev/null
-
+# If there is no session named Sojourner
 if [ $? != 0 ]
 then
-     tmux new-session -s Sojourner -d
-     tmux send-keys -t Sojourner 'vim' C-m
-     tmux split-window -t Sojourner -h
-     tmux split-window -t Sojourner:1.2 -v -p 30
+     # Create a new session named Sojourner
+     tmux new-session -s Sojourner -d -c ~/
+     # Window 1: Triple-pane, top-left is Vim
+     tmux split-window -t Sojourner -v -c ~/
+     tmux split-window -t Sojourner:1.1 -h -c ~/
+     tmux resize-pane -t Sojourner:1.1 -x 85
+     tmux resize-pane -t Sojourner:1.2 -y 10
+     tmux send-keys -t Sojourner:1.1 'vim' C-m
+     # Window 2: 4-pane, main-vertical layout
+     tmux new-window -c ~/
+     tmux split-window -t Sojourner:2.1 -h -c ~/
+     tmux split-window -t Sojourner:2.1 -h -c ~/
+     tmux split-window -t Sojourner:2.1 -h -c ~/
+     tmux select-layout -t Sojourner:2 main-vertical
+     # Window 3: Single, full-size pane
+     tmux new-window -c ~/
+     # Focus on the first window, first pane
      tmux select-pane -t Sojourner:1.1
 fi
-
+# Attack to the Sojourner session
 tmux attach -t Sojourner
