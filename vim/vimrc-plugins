@@ -34,9 +34,13 @@ Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
 " Plug 'justinmk/vim-sneak'
 " Plug 'ap/vim-templates'
 
+" Ruby Related
+Plug 'tpope/vim-endwise'
+Plug 'vim-ruby/vim-ruby'
 
 " Appearance Related
 Plug 'mhinz/vim-startify'
