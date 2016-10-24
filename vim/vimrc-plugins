@@ -49,6 +49,7 @@ Plug 'bling/vim-airline'
 " Syntax Related
 Plug 'scrooloose/syntastic'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'rondale-sc/vim-spacejam'
 
 call plug#end()
 
