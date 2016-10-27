@@ -35,7 +35,6 @@ Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
-" Plug 'justinmk/vim-sneak'
 " Plug 'ap/vim-templates'
 
 " Ruby Related
@@ -72,3 +71,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
 let g:syntastic_sh_checkers = [ 'shellcheck', 'sh' ]
+
+" Vimwiki Configs
+"" Insert my journal template, and the current date
+nnoremap <silent><leader>tj :call NewJournal()<CR>
+function! NewJournal()
+     .-1read ~/.vim/templates/journal
+     s/Date/\=strftime("%A, %B %d")/
+endfunction
