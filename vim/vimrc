@@ -21,29 +21,28 @@ set autoread
 " Shows you which commands you're typing
 set showcmd
 
-" Enable line numbers, and make them relative
+" Enable line numbers
 set number
-set rnu
 
 " Indendation modifications
 " Auto indent; set spacing; use spaces
 set autoindent
 set expandtab
 set smarttab
-set shiftwidth=5
-set softtabstop=5
-" Ruby-specific
-augroup rubyfiletypes
+set shiftwidth=4
+set softtabstop=4
+" File-Type Specifics
+augroup customfiletypes
      " Clear old autocmds in group
      autocmd!
      " Set auto-indent to two spaces, always expand tabs
-     autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+     autocmd FileType ruby,eruby,yaml set sw=2 sts=2
 augroup END
 
 " Spacing
 " Set width; word wrap; scroll mods
 set scrolloff=5
-set tw=80
+set textwidth=80
 " set colorcolumn=80
 set wrap
 
@@ -61,21 +60,12 @@ set hlsearch
 colorscheme desert
 
 "######
-"# Plugins
-"###
-
-" Old Way: Pathogen, add-ons go in ~/.vim/bundle/
-"    runtime bundle/vim-pathogen/autoload/pathogen.vim
-"    execute pathogen#infect()
-
-" New Way: Vim-Plug, add-ons configured in .vimrc-plugins
-     if filereadable(expand("~/.vimrc-plugins"))
-          source ~/.vimrc-plugins
-     endif
-
-"######
 "# Mappings
 "##
+"
+" I make use of many mappings from vim-impaired (hlsearch, relative numbering,
+" and several other toggles). I highly suggest investing the time to learn and
+" take advantage of those very eash mappings!
 
 " Map Leader key
 let mapleader = ","
@@ -86,10 +76,6 @@ nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
 
-" Shift between tabs with Shift+h/l
-nnoremap <silent> <S-l> gt
-nnoremap <silent> <S-h> gT
-
 " Move between splits with CTRL+h/j/k/l
 nnoremap <silent> <C-l> <C-w>l
 nnoremap <silent> <C-k> <C-w>k
@@ -98,12 +84,6 @@ nnoremap <silent> <C-h> <C-w>h
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
-
-" Toggle relative numbering
-nnoremap <silent> <leader>n :set rnu!<CR>
-
-" Easy-toggle nohlsearch
-nnoremap <silent> <leader>h :set nohlsearch!<CR>
 
 " Edit dotfiles with <leader>d
 "  v is for vim
@@ -119,8 +99,18 @@ nnoremap <silent> <leader>h :set nohlsearch!<CR>
 " Remap ESC in insert mode
 inoremap jk <esc>
 
-" Toggle spell-check
-nmap <silent> <leader>s :set spell!<CR>
-
 " Remove Trailing Whitespaace
 nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
+
+"######
+"# Plugins
+"###
+
+" Old Way: Pathogen, add-ons go in ~/.vim/bundle/
+"    runtime bundle/vim-pathogen/autoload/pathogen.vim
+"    execute pathogen#infect()
+
+" New Way: Vim-Plug, add-ons configured in .vimrc-plugins
+     if filereadable(expand("~/.vimrc-plugins"))
+          source ~/.vimrc-plugins
+     endif
