@@ -25,6 +25,7 @@ endif
 " # Fetch & Install Plugins
 " ###
 
+
 call plug#begin('~/.vim/bundle')
 
 " Current list of plugins
@@ -61,8 +62,14 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " Startify configs
-let g:startify_files_number = 5
+let g:startify_files_number = 6
 let g:startify_change_to_dir = 1
+let g:startify_bookmarks = [
+          \ '~/.dotfiles/vim/vimrc',
+          \ '~/.dotfiles/vim/vimrc-plugins',
+          \ '~/.dotfiles/tmux/tmux.conf',
+          \ '~/.dotfiles/makefile',
+          \ ]
 
 " Syntastic configs
 let g:syntastic_always_populate_loc_list = 1

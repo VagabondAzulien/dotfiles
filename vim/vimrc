@@ -14,6 +14,7 @@ set nocompatible
 " Necessary for Syntax hilighting and cool stuff
 syntax on
 filetype plugin indent on
+set encoding=utf-8
 
 " Auto-reload files changed outside Vim
 set autoread
@@ -29,8 +30,10 @@ set number
 set autoindent
 set expandtab
 set smarttab
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
 " File-Type Specifics
 augroup customfiletypes
      " Clear old autocmds in group
@@ -43,7 +46,7 @@ augroup END
 " Set width; word wrap; scroll mods
 set scrolloff=5
 set textwidth=80
-" set colorcolumn=80
+set winwidth=80
 set wrap
 
 " Enable auto-completion for vim commands
@@ -53,6 +56,7 @@ set wildmode:longest:full,full
 
 " Search modifications
 " Incremental search; search hilighting
+set ignorecase smartcase
 set incsearch
 set hlsearch
 
@@ -85,22 +89,20 @@ nnoremap <silent> <C-h> <C-w>h
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" Edit dotfiles with <leader>d
-"  v is for vim
-     nnoremap <silent> <leader>dv :tabnew ~/.dotfiles/vim/vimrc<CR>
-     nnoremap <silent> <leader>dp :tabnew ~/.dotfiles/vim/vimrc-plugins<CR>
-"  b is for bash
-"    nnoremap <silent> <leader>db :tabnew ~/.dotfiles/bash/bashrc<CR>
-"  t is for tmux
-     nnoremap <silent> <leader>dt :tabnew ~/.dotfiles/tmux/tmux.conf<CR>
-"  m is for makefile
-     nnoremap <silent> <leader>dm :tabnew ~/.dotfiles/makefile<CR>
-
 " Remap ESC in insert mode
 inoremap jk <esc>
 
 " Remove Trailing Whitespaace
 nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
+
+" Easy mapping for Startify
+nnoremap <silent> <leader>s :Startify<CR>
+
+" Open help topics in a full new tab
+command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
+
+" Show buffer list and prompt to choose one
+nnoremap <leader>b :ls<CR>:b<space>
 
 "######
 "# Plugins
