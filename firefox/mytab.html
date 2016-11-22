@@ -12,21 +12,29 @@
             text-decoration: none;
             transition: color 1s; }
         a:hover {
-            color: #5555ff;
+            color: #d4d454;
             text-decoration: none;
             transition: color 1s; }
-        div#fence {
-            width: 1000px; margin-left: auto; margin-right: auto; }
+        body {
+            position: absolute; bottom: 0px; display: table;
+            width: 100%; height: 100%;
+            margin: 0; padding: 0; }
+        header {
+            position: fixed; top: 0px; right: 0px;
+            height: 50px; width: 50px;
+            border: 2px solid white;}
+        #fence {
+            display: table-cell; vertical-align: middle;
+            margin: 0px auto; width: 1000px; }
         #links {
-            float: left; width: 145px;
-            margin: 25px; padding: 0px 0px 12px 0px;
+            float: left; width: 150px;
+            margin: 25px 46px; padding: 0px 0px 12px 0px;
             list-style: none;
-            border: 2px solid #270e24;
-            border-radius: 10px;
+            border: 2px solid #270e24; border-radius: 10px;
             background-color: #270e24; }
         #links #header {
             background-color: #270e24;
-            color: gray; font-weight: bold;
+            color: lightgray; font-weight: bold;
             border-top-right-radius: 10px; border-top-left-radius: 10px; }
         #links li {
             padding: 5px 10px;
@@ -34,15 +42,17 @@
             text-align: center; }
         footer {
             position: fixed; bottom: 0px; left: 0px; right: 0px; width: 75%;
-            margin-left: auto; margin-right: auto;
-            text-align: center; letter-spacing: 5px;
+            margin: 0px auto;
+            text-align: center; letter-spacing: 8px;
             font-family: monospace; font-weight: bold; color: gray; }
     </style>
     <title>++ H O M E ++</title>
 </head>
 <body >
+    <header>
+    </header>
      <!-- Commonly visited links -->
-    <div id="fence">
+    <section id="fence">
         <ul id="links">
             <li id="header">Watch</li>
             <li><a href="https://www.youtube.com/feed/subscriptions">
@@ -53,22 +63,19 @@
             <li><a href="https://www.amazon.com/video">Amazon</a></li>
         </ul>
         <ul id="links">
-            <li id="header">Reddit</li>
-            <li><a href="https://www.reddit.com">Home</a></li>
-            <li><a href="https://www.reddit.com/r/vim">Vim</a></li>
-            <li><a href="https://www.reddit.com/r/sysadmin">Sys Admin</a></li>
-            <li><a href="https://www.reddit.com/r/unixporn">Unix Porn</a></li>
-            <li><a href="https://www.reddit.com/r/stoicism">Stoicism</a></li>
-        </ul>
-        <ul id="links">
-            <li id="header">Read</li>
-            <li><a href="https://feedly.com">Feedly</a></li>
-            <li><a href="https://news.ycombinator.com/">Hacker News</a></li>
-        </ul>
-        <ul id="links">
             <li id="header">Listen</li>
             <li><a href="https://bandcamp.com/azulien">Bandcamp</a></li>
             <li><a href="https://www.pandora.com">Pandora</a></li>
+            <li><a href="http://audionoir.com">Audio Noir</a></li>
+            <li><a href="http://www.radio-kol.net/">Radio KoL</a></li>
+        </ul>
+        <ul id="links">
+            <li id="header">Read</li>
+            <li><a href="https://news.ycombinator.com/">Hacker News</a></li>
+            <li><a href="https://www.reddit.com">Reddit</a></li>
+            <li><a href="https://www.reddit.com/r/vim">/r/vim</a></li>
+            <li><a href="https://www.reddit.com/r/unixporn">/r/unixporn</a></li>
+            <li><a href="https://www.reddit.com/r/stoicism">/r/stoicism</a></li>
         </ul>
         <ul id="links">
             <li id="header">Play</li>
@@ -77,10 +84,10 @@
             <li><a href="https://discordapp.com/channels/@me">Discord</a></li>
             <li><a href="https://vghd.slack.com/">VGHD Slack</a></li>
         </ul>
-    </div>
+    </section>
+    <footer>
+         <hr>
+         <p>ENDURE and RENOUNCE</p>
+    </footer>
 </body>
-<footer>
-     <hr>
-     <p>ENDURE and RENOUNCE</p>
-</footer>
 </html>
