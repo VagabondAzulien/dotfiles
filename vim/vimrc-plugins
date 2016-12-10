@@ -45,6 +45,7 @@ Plug 'vim-ruby/vim-ruby'
 " Appearance Related
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
+Plug 'dikiaap/minimalist'
 
 " Syntax Related
 Plug 'scrooloose/syntastic'
@@ -56,6 +57,10 @@ call plug#end()
 " ######
 " # Configs
 " ###
+
+" Colorscheme - minimalist configuration
+set t_Co=256
+colorscheme minimalist
 
 " Airline configuration
 set laststatus=2
