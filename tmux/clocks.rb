@@ -32,7 +32,7 @@ class Clocks
     w = Weather.new()
     t = Time.new()
     @tu = t.utc.strftime("[ %H:%M ]")
-    @tb = t.getlocal("-04:00").strftime("<][ %b %d %H:%M | ")
+    @tb = t.getlocal.strftime("<][ %b %d %H:%M | ")
     @tw = "#{w::flag} #{w::temp} ][>"
     @tc = t.getlocal("-07:00").strftime("<][ %H:%M ]")
     @ti = t.getlocal("+05:30").strftime("[ %H:%M ][>")

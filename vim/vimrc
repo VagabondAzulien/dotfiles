@@ -19,6 +19,9 @@ set encoding=utf-8
 " Auto-reload files changed outside Vim
 set autoread
 
+" Enable persistent undo
+set undofile
+
 " Shows you which commands you're typing
 set showcmd
 
@@ -49,6 +52,12 @@ set textwidth=80
 set winwidth=80
 set wrap
 
+" Folding
+" Enable folding; map fold-toggle to space when applicable
+set foldmethod=syntax
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
 " Enable auto-completion for vim commands
 " :help wildmode and :help wildmenu for details
 set wildmenu
@@ -61,15 +70,20 @@ set incsearch
 set hlsearch
 
 " Set default/backup colorscheme
-colorscheme desert
+" colorscheme desert
+
+" Spelling, but only on by default for certain files
+augroup spellcheckr
+    autocmd BufNewFile,BufRead *.md setlocal spell
+    autocmd BufNewFile,BufRead *.rdoc setlocal spell
+    autocmd BufNewFile,BufRead *.txt setlocal spell
+    autocmd BufNewFile,BufRead *.wiki setlocal spell
+augroup END
 
 "######
 "# Mappings
 "##
 "
-" I make use of many mappings from vim-impaired (hlsearch, relative numbering,
-" and several other toggles). I highly suggest investing the time to learn and
-" take advantage of those very eash mappings!
 
 " Map Leader key
 let mapleader = ","
@@ -99,7 +113,7 @@ nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
 nnoremap <silent> <leader>s :Startify<CR>
 
 " Open help topics in a full new tab
-command! -nargs=1 -complete=help H :enew | :set buftype=help | :h <args>
+command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
 
 " Show buffer list and prompt to choose one
 nnoremap <leader>b :ls<CR>:b<space>
@@ -107,10 +121,6 @@ nnoremap <leader>b :ls<CR>:b<space>
 "######
 "# Plugins
 "###
-
-" Old Way: Pathogen, add-ons go in ~/.vim/bundle/
-"    runtime bundle/vim-pathogen/autoload/pathogen.vim
-"    execute pathogen#infect()
 
 " New Way: Vim-Plug, add-ons configured in .vimrc-plugins
      if filereadable(expand("~/.vimrc-plugins"))

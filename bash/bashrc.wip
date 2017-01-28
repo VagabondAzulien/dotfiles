@@ -10,6 +10,11 @@ if which ruby >/dev/null && which gem >/dev/null; then
      PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+# Add Python projects to path
+PYTHONPATH="${PYTHONPATH}:/home/niblock/Lab/gomez_audit"
+
+export PYTHONPATH
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
@@ -37,3 +42,5 @@ function live(){
           * ) echo "Not an option, try again." ;;
      esac
 }
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

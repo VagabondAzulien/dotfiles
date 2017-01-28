@@ -5,3 +5,5 @@
 vim/vim/autoload
 vim/vim/bundle
 
+# Ignore undo files
+*.un~

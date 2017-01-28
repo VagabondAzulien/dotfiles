@@ -25,7 +25,6 @@ endif
 " # Fetch & Install Plugins
 " ###
 
-
 call plug#begin('~/.vim/bundle')
 
 " Current list of plugins
@@ -36,6 +35,7 @@ Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
+Plug 'ajh17/VimCompletesMe'
 " Plug 'ap/vim-templates'
 
 " Ruby Related
@@ -46,6 +46,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'dikiaap/minimalist'
+Plug 'junegunn/goyo.vim'
 
 " Syntax Related
 Plug 'scrooloose/syntastic'
@@ -85,9 +86,14 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_sh_checkers = [ 'shellcheck', 'sh' ]
 
 " Vimwiki Configs
+let g:vimwiki_list = [{'auto_tags': 1}]
 "" Insert my journal template, and the current date
 nnoremap <silent><leader>tj :call NewJournal()<CR>
 function! NewJournal()
      .-1read ~/.vim/templates/journal
      s/Date/\=strftime("%A, %B %d")/
 endfunction
+
+"" Easy mappings for previous/next day, since defaults don't work
+nnoremap <silent><leader>dp :VimwikiDiaryPrevDay<CR>
+nnoremap <silent><leader>dn :VimwikiDiaryNextDay<CR>
