@@ -15,6 +15,6 @@
 #    User details
 [user]
 	name = Bill Niblock
-	email = bill_niblock@yahoo.com
+	email = azulien@gmail.com
 [init]
 	templatedir = ~/.git_template
