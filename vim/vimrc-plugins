@@ -1,63 +1,41 @@
-" ######
-" # Plugin File for Vim Using
-" # Vim-Plug: A minimalist Vim plugin manager
-" ###
+" ==============================================================================
+" vimrc-plugins: Plug-in configuration. Using vim-plug.
+" ==============================================================================
 
-" ###
-" Quick-Reference
-" ===
-" :PlugInstall - install plugins
-" :PlugUpdate - install/update plugins
-" :PlugUpgrade - upgrade vim-plug
-" ###
-
-" ######
-" # Fetch & Install Self
-" ###
-
+" Fetch & Install Self
 if empty(glob('~/.vim/autoload/plug.vim'))
      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
           \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
      autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-" ######
-" # Fetch & Install Plugins
-" ###
-
 call plug#begin('~/.vim/bundle')
-
-" Current list of plugins
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-tbone'
-Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-commentary'
-Plug 'ajh17/VimCompletesMe'
-" Plug 'ap/vim-templates'
-
-" Ruby Related
-Plug 'tpope/vim-endwise'
-Plug 'vim-ruby/vim-ruby'
-
-" Appearance Related
-Plug 'mhinz/vim-startify'
-Plug 'bling/vim-airline'
-Plug 'dikiaap/minimalist'
-Plug 'junegunn/goyo.vim'
-
-" Syntax Related
-Plug 'scrooloose/syntastic'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'rondale-sc/vim-spacejam'
-
+  " Current list of plugins
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-vinegar'
+  Plug 'tpope/vim-tbone'
+  Plug 'tpope/vim-surround'
+  Plug 'vimwiki/vimwiki'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-commentary'
+  Plug 'ajh17/VimCompletesMe'
+  " Ruby Related
+  Plug 'tpope/vim-endwise'
+  Plug 'vim-ruby/vim-ruby'
+  " Appearance Related
+  Plug 'mhinz/vim-startify'
+  Plug 'bling/vim-airline'
+  Plug 'dikiaap/minimalist'
+  Plug 'junegunn/goyo.vim'
+  " Syntax Related
+  Plug 'scrooloose/syntastic'
+  Plug 'tmux-plugins/vim-tmux'
+  Plug 'rondale-sc/vim-spacejam'
 call plug#end()
 
-" ######
-" # Configs
-" ###
+" ==============================================================================
+" Plugin Configuration
+" ==============================================================================
 
 " Colorscheme - minimalist configuration
 set t_Co=256
@@ -86,7 +64,7 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_sh_checkers = [ 'shellcheck', 'sh' ]
 
 " Vimwiki Configs
-let g:vimwiki_list = [{'auto_tags': 1}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_tags': 1}]
 "" Insert my journal template, and the current date
 nnoremap <silent><leader>tj :call NewJournal()<CR>
 function! NewJournal()
