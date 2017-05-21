@@ -22,7 +22,7 @@ set tabstop=4                     " How many spaces a tab is
 set shiftwidth=4                  " How many spaces to shift
 set softtabstop=4                 " How many spaces to use when editing
 set textwidth=80                  " How long a line is
-set winwidth=80                   " Minimum width of a window
+set winwidth=85                   " Minimum width of a window
 set wrap                          " Wrap text
 
 set foldmethod=syntax             " Enable folding on a syntax level
@@ -32,6 +32,8 @@ set wildmode:longest:full,full    " Configure wildmenu
 set ignorecase smartcase          " Search: ignore case, unless case matters
 set incsearch                     " Zoom to search results as I type
 set hlsearch                      " Hilight search results
+
+let g:netrw_liststyle=3           " Netrw Tree list style
 
 augroup ruby_settings             " Settings for Ruby and Ruby-like langs
      autocmd!
@@ -43,16 +45,9 @@ augroup spellcheckr               " Spelling, for some files...
     autocmd BufNewFile,BufRead *.md,*.rdoc,*.txt,*.wiki setlocal spell
 augroup END
 
-" Some netrw configuration
-" let g:netrw_liststyle=3
-" let g:netrw_browse_split=4
-" let g:netrw_winsize=25
-
-
 " ==============================================================================
 " Status Line
 " ==============================================================================
-hi StatusLineError ctermfg=15 ctermbg=1 guifg=red
 set laststatus=2
 set statusline=
 set statusline+=%m
@@ -63,6 +58,7 @@ set statusline+=%#Pmenu#
 set statusline+=\ %F
 set statusline+=%=
 set statusline+=
+set statusline+=%y\ 
 set statusline+=%#StatusLine#
 set statusline+=\|%l\:%c\|
 set statusline+=%#SyntasticError#
@@ -100,11 +96,14 @@ inoremap jk <esc>
 " Remove Trailing Whitespaace
 nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
 
-" Open help topics in a full new tab
+" Open help topic in a full new tab
 command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
 
 " Show buffer list and prompt to choose one
 nnoremap <leader>b :ls<CR>:b<space>
+
+" Simple mapping to dotfiles directory
+nnoremap <silent> <leader>df :tabnew ~/.dotfiles/<CR>
 
 " ==============================================================================
 " Plugins

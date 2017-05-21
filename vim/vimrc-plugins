@@ -24,7 +24,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-endwise'
   Plug 'vim-ruby/vim-ruby'
   " Appearance Related
-  Plug 'mhinz/vim-startify'
   Plug 'dikiaap/minimalist'
   Plug 'junegunn/goyo.vim'
   " Syntax Related
@@ -40,20 +39,7 @@ call plug#end()
 set t_Co=256
 colorscheme minimalist
 
-" Startify configs
-let g:startify_files_number = 6
-let g:startify_change_to_dir = 1
-let g:startify_bookmarks = [
-          \ '~/.dotfiles/vim/vimrc',
-          \ '~/.dotfiles/vim/vimrc-plugins',
-          \ '~/.dotfiles/tmux/tmux.conf',
-          \ '~/.dotfiles/makefile',
-          \ ]
-
 " Syntastic configs
-" Easy mapping for Startify
-nnoremap <silent> <leader>s :Startify<CR>
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -69,7 +55,3 @@ function! NewJournal()
      .-1read ~/.vim/templates/journal
      s/Date/\=strftime("%A, %B %d")/
 endfunction
-
-"" Easy mappings for previous/next day, since defaults don't work
-nnoremap <silent><leader>dp :VimwikiDiaryPrevDay<CR>
-nnoremap <silent><leader>dn :VimwikiDiaryNextDay<CR>
