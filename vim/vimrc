@@ -48,6 +48,26 @@ augroup END
 " let g:netrw_browse_split=4
 " let g:netrw_winsize=25
 
+
+" ==============================================================================
+" Status Line
+" ==============================================================================
+hi StatusLineError ctermfg=15 ctermbg=1 guifg=red
+set laststatus=2
+set statusline=
+set statusline+=%m
+set statusline+=%r
+set statusline+=%h
+set statusline+=%{fugitive#statusline()}
+set statusline+=%#Pmenu#
+set statusline+=\ %F
+set statusline+=%=
+set statusline+=
+set statusline+=%#StatusLine#
+set statusline+=\|%l\:%c\|
+set statusline+=%#SyntasticError#
+set statusline+=%{SyntasticStatuslineFlag()}
+
 " ==============================================================================
 " Mappings
 " ==============================================================================
@@ -79,9 +99,6 @@ inoremap jk <esc>
 
 " Remove Trailing Whitespaace
 nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
-
-" Easy mapping for Startify
-nnoremap <silent> <leader>s :Startify<CR>
 
 " Open help topics in a full new tab
 command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>

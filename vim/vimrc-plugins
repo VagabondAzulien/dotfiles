@@ -19,18 +19,17 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-commentary'
   Plug 'ajh17/VimCompletesMe'
+  Plug 'ludovicchabant/vim-gutentags'
   " Ruby Related
   Plug 'tpope/vim-endwise'
   Plug 'vim-ruby/vim-ruby'
   " Appearance Related
   Plug 'mhinz/vim-startify'
-  Plug 'bling/vim-airline'
   Plug 'dikiaap/minimalist'
   Plug 'junegunn/goyo.vim'
   " Syntax Related
   Plug 'scrooloose/syntastic'
   Plug 'tmux-plugins/vim-tmux'
-  Plug 'rondale-sc/vim-spacejam'
 call plug#end()
 
 " ==============================================================================
@@ -40,10 +39,6 @@ call plug#end()
 " Colorscheme - minimalist configuration
 set t_Co=256
 colorscheme minimalist
-
-" Airline configuration
-set laststatus=2
-let g:airline_powerline_fonts = 1
 
 " Startify configs
 let g:startify_files_number = 6
@@ -56,6 +51,9 @@ let g:startify_bookmarks = [
           \ ]
 
 " Syntastic configs
+" Easy mapping for Startify
+nnoremap <silent> <leader>s :Startify<CR>
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
