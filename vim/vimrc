@@ -8,6 +8,7 @@
 set nocompatible                  " Be IMproved (https://goo.gl/2RiJoo)
 syntax on                         " Syntax hilighting
 filetype plugin indent on         " Recognize filetype, indent, plugin files
+set t_Co=256                      " Set number of colors (256)
 set encoding=utf-8                " Character encoding
 set autoread                      " Auto-reload files changed outside Vim
 set autochdir                     " Auto-change to local file directory
@@ -44,30 +45,33 @@ augroup spellcheckr               " Spelling, for some files...
     autocmd!
     autocmd BufNewFile,BufRead *.md,*.rdoc,*.txt,*.wiki setlocal spell
 augroup END
-
 " ==============================================================================
 " Status Line
 " ==============================================================================
-set laststatus=2
-set statusline=
-set statusline+=%m
-set statusline+=%r
-set statusline+=%h
-set statusline+=%{fugitive#statusline()}
-set statusline+=%#Pmenu#
-set statusline+=\ %F
-set statusline+=%=
-set statusline+=
-set statusline+=%y\ 
+set laststatus=2                                " Enable the statusline
+set statusline=                                 " Initialize it
+set statusline+=%m%1*%r%0*%h                    " Modified, RO, Help flags
+set statusline+=%2*%{&spell?'[SPELL]':''}       " Spell flag
 set statusline+=%#StatusLine#
-set statusline+=\|%l\:%c\|
-set statusline+=%#SyntasticError#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{fugitive#statusline()}        " Fugitive: Git branch
+set statusline+=%#Pmenu#                        " Color change (see :hi)
+set statusline+=\ %F                            " Full-path to current buffer
+set statusline+=%=                              " Switch to right-side
+set statusline+=%y\                             " Filetype
+set statusline+=%#StatusLine#                   " Color change (see :hi)
+set statusline+=\|%4l\:%2c\|                    " Line and column
+set statusline+=%#SyntasticError#               " Color change (see :hi_
+set statusline+=%{SyntasticStatuslineFlag()}    " Syntastic: Warnings/Errors
 
+augroup user_colors
+    autocmd!
+    autocmd ColorScheme *
+                \ hi User1 term=bold cterm=bold ctermfg=167 ctermbg=239 |
+                \ hi User2 term=bold cterm=bold ctermfg=111 ctermbg=239
+augroup END
 " ==============================================================================
 " Mappings
 " ==============================================================================
-
 " Map Leader key
 let mapleader = ","
 
@@ -76,12 +80,6 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
-
-" Move between splits with CTRL+h/j/k/l
-nnoremap <silent> <C-l> <C-w>l
-nnoremap <silent> <C-k> <C-w>k
-nnoremap <silent> <C-j> <C-w>j
-nnoremap <silent> <C-h> <C-w>h
 
 " Toggle fold with space, if we're in a fold, otherwise just space
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
@@ -103,12 +101,10 @@ command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
 nnoremap <leader>b :ls<CR>:b<space>
 
 " Simple mapping to dotfiles directory
-nnoremap <silent> <leader>df :tabnew ~/.dotfiles/<CR>
-
+nnoremap <silent> <leader>f :tabnew ~/.dotfiles/<CR>
 " ==============================================================================
 " Plugins
 " ==============================================================================
-
 if filereadable(expand("~/.vimrc-plugins"))
     source ~/.vimrc-plugins
 endif

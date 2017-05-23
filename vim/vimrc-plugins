@@ -36,7 +36,6 @@ call plug#end()
 " ==============================================================================
 
 " Colorscheme - minimalist configuration
-set t_Co=256
 colorscheme minimalist
 
 " Syntastic configs
@@ -48,7 +47,7 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_sh_checkers = [ 'shellcheck', 'sh' ]
 
 " Vimwiki Configs
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_tags': 1}]
+let g:vimwiki_list = [{'path': '~/Workbench/vimwiki/', 'auto_tags': 1}]
 "" Insert my journal template, and the current date
 nnoremap <silent><leader>tj :call NewJournal()<CR>
 function! NewJournal()
