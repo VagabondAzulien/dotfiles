@@ -72,36 +72,28 @@ augroup END
 " ==============================================================================
 " Mappings
 " ==============================================================================
-" Map Leader key
 let mapleader = ","
-
+" Remap ESC in insert mode
+inoremap jk <esc>
 " Make moving up/down work on wrapped lines of text
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
-
 " Toggle fold with space, if we're in a fold, otherwise just space
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
-
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
-
-" Remap ESC in insert mode
-inoremap jk <esc>
-
 " Remove Trailing Whitespaace
 nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
-
 " Open help topic in a full new tab
 command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
-
 " Show buffer list and prompt to choose one
 nnoremap <leader>b :ls<CR>:b<space>
-
-" Simple mapping to dotfiles directory
-nnoremap <silent> <leader>f :tabnew ~/.dotfiles/<CR>
+" Simple mapping to dotfiles directory (f = current tab; F = new tab)
+nnoremap <silent> <leader>f :edit ~/.dotfiles/<CR>
+nnoremap <silent> <leader>F :tabnew ~/.dotfiles/<CR>
 " ==============================================================================
 " Plugins
 " ==============================================================================

@@ -6,15 +6,10 @@
 #    Show me absolute paths, not relative paths
 #    Link to a global excludes file
 [status]
-	relativePaths = false
+    relativePaths = false
 
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 
-# User Settings
-#    User details
-[user]
-	name = Bill Niblock
-	email = azulien@gmail.com
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
