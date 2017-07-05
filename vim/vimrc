@@ -11,7 +11,6 @@ filetype plugin indent on         " Recognize filetype, indent, plugin files
 set t_Co=256                      " Set number of colors (256)
 set encoding=utf-8                " Character encoding
 set autoread                      " Auto-reload files changed outside Vim
-set autochdir                     " Auto-change to local file directory
 set undofile                      " Enable persistent undo
 set showcmd                       " Shows you which commands you're typing
 set number                        " Enable line numbers
@@ -23,7 +22,7 @@ set tabstop=4                     " How many spaces a tab is
 set shiftwidth=4                  " How many spaces to shift
 set softtabstop=4                 " How many spaces to use when editing
 set textwidth=80                  " How long a line is
-set winwidth=85                   " Minimum width of a window
+set winwidth=90                   " Minimum width of a window
 set wrap                          " Wrap text
 
 set foldmethod=syntax             " Enable folding on a syntax level
@@ -63,7 +62,7 @@ set statusline+=\|%4l\:%2c\|                    " Line and column
 set statusline+=%#SyntasticError#               " Color change (see :hi_
 set statusline+=%{SyntasticStatuslineFlag()}    " Syntastic: Warnings/Errors
 
-augroup user_colors
+augroup user_stl_colors
     autocmd!
     autocmd ColorScheme *
                 \ hi User1 term=bold cterm=bold ctermfg=167 ctermbg=239 |
