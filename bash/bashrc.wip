@@ -1,46 +1,54 @@
-# .bashrc
+#-----------------------------------------------------------------------------#
+# General Bash Configuration File ## source ~/.bashrc ## niblock             ##
+#-----------------------------------------------------------------------------#
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
-# Add Gems to path
+#-----------------------------------------------------------------------------#
+# Prompt
+#-----------------------------------------------------------------------------#
+
+
+#-----------------------------------------------------------------------------#
+# Aliases
+#-----------------------------------------------------------------------------#
+
+alias tssh="source ~/.ssh/auth_ssh; ssh -A"
+complete -F _ssh tssh
+
+#-----------------------------------------------------------------------------#
+# Functions
+#-----------------------------------------------------------------------------#
+
+#If redshift wasn't automatically started, this will do it
+function tint(){
+    redshift -l 42.8864500:-78.8783700 -t 5000:4000 &
+}
+
+# Function for keeping ssh-agent happy
+function yssh(){
+    echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" > ~/.ssh/auth_ssh
+}
+
+#-----------------------------------------------------------------------------#
+# Path
+#-----------------------------------------------------------------------------#
+
+# Ruby Gems
 if which ruby >/dev/null && which gem >/dev/null; then
-     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
+
+# RVM
+PATH="$HOME/.rvm/bin:$PATH"
 
 # Add Python projects to path
 PYTHONPATH="${PYTHONPATH}:/home/niblock/Lab/gomez_audit"
 
 export PYTHONPATH
+export PATH
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
-# complete -cf sudo
-
-######
-# Aliases
-###
-
-
-######
-# Functions
-###
-
-#If redshift wasn't automatically started, this will do it
-function tint(){
-	redshift -l 42.8864500:-78.8783700 -t 5000:4000 &
-}
-
-#Wrapper function for livestreamer script
-function live(){
-     case $1 in 
-          'twitch' )  livestreamer twitch.tv/$2 best & ;;
-     'yt' | 'youtube' ) livestreamer $2 best & ;;
-          * ) echo "Not an option, try again." ;;
-     esac
-}
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export SSH_AUTH_SOCK=$HOME/.yubiagent/sock
