@@ -12,12 +12,11 @@ endif
 call plug#begin('~/.vim/bundle')
   " Current list of plugins
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-tbone'
   Plug 'tpope/vim-surround'
-  Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-commentary'
+  Plug 'vimwiki/vimwiki'
   Plug 'ajh17/VimCompletesMe'
   Plug 'ludovicchabant/vim-gutentags'
   " Ruby Related
