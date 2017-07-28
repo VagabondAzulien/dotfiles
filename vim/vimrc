@@ -52,15 +52,14 @@ set statusline=                                 " Initialize it
 set statusline+=%m%1*%r%0*%h                    " Modified, RO, Help flags
 set statusline+=%2*%{&spell?'[SPELL]':''}       " Spell flag
 set statusline+=%#StatusLine#
-set statusline+=%{fugitive#statusline()}        " Fugitive: Git branch
+" Show the Fugitive-provided status line, if Fugitive is installed
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=%#Pmenu#                        " Color change (see :hi)
 set statusline+=\ %F                            " Full-path to current buffer
 set statusline+=%=                              " Switch to right-side
 set statusline+=%y\                             " Filetype
 set statusline+=%#StatusLine#                   " Color change (see :hi)
 set statusline+=\|%4l\:%2c\|                    " Line and column
-set statusline+=%#SyntasticError#               " Color change (see :hi_
-set statusline+=%{SyntasticStatuslineFlag()}    " Syntastic: Warnings/Errors
 
 augroup user_stl_colors
     autocmd!
@@ -72,8 +71,6 @@ augroup END
 " Mappings
 " ==============================================================================
 let mapleader = ","
-" Remap ESC in insert mode
-inoremap jk <esc>
 " Make moving up/down work on wrapped lines of text
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -88,11 +85,11 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
 " Open help topic in a full new tab
 command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
-" Show buffer list and prompt to choose one
-nnoremap <leader>b :ls<CR>:b<space>
 " Simple mapping to dotfiles directory (f = current tab; F = new tab)
 nnoremap <silent> <leader>f :edit ~/.dotfiles/<CR>
 nnoremap <silent> <leader>F :tabnew ~/.dotfiles/<CR>
+" Emulatae vinegar.vim
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 " ==============================================================================
 " Plugins
 " ==============================================================================
