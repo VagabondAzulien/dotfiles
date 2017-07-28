@@ -10,6 +10,3 @@
 
 [core]
     excludesfile = ~/.gitignore
-
-[init]
-    templatedir = ~/.git_template
