@@ -23,7 +23,6 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-endwise'
   Plug 'vim-ruby/vim-ruby'
   " Appearance Related
-  Plug 'dikiaap/minimalist'
   Plug 'junegunn/goyo.vim'
   " Syntax Related
   Plug 'scrooloose/syntastic'
@@ -33,9 +32,6 @@ call plug#end()
 " ==============================================================================
 " Plugin Configuration
 " ==============================================================================
-
-" Colorscheme - minimalist configuration
-colorscheme minimalist
 
 " Syntastic configs
 let g:syntastic_stl_format = "%W{ [•%w] }%E{ [!%e] }"
