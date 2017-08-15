@@ -18,6 +18,7 @@ set tabstop=4                     " How many spaces a tab is
 set shiftwidth=4                  " How many spaces to shift
 set softtabstop=4                 " How many spaces to use when editing
 
+colorscheme minimalist            " Set colorscheme
 set number                        " Enable line numbers
 set wrap                          " Wrap text
 set textwidth=80                  " How long a line is
@@ -34,12 +35,14 @@ set incsearch                     " Zoom to search results as I type
 set nohlsearch                    " Don't highlight search by default
 
 let g:netrw_liststyle=3           " Netrw Tree list style
+let g:netrw_banner=0              " Disable the netrw banner
 
 augroup ruby_settings             " Settings for Ruby and Ruby-like langs
      autocmd!
      autocmd FileType ruby,eruby,yaml 
                  \ setlocal shiftwidth=2 
                  \          softtabstop=2
+                 \          makeprg=rubocop
 augroup END
 
 augroup spellcheckr               " Spelling, for some files...
@@ -73,10 +76,10 @@ set statusline+=\|%4l\:%2c\|                    " Line and column
 augroup user_stl_colors
     autocmd!
     autocmd ColorScheme *
-                \ hi User1 term=bold cterm=bold ctermfg=167 ctermbg=239 |
-                \ hi User2 term=bold cterm=bold ctermfg=111 ctermbg=239 |
-                \ hi User3 term=bold cterm=bold ctermfg=255 ctermbg=239 |
-                \ hi User4 ctermfg=255 ctermbg=0
+                \ hi User1 term=bold cterm=bold ctermfg=009 ctermbg=010 |
+                \ hi User2 term=bold cterm=bold ctermfg=006 ctermbg=010 |
+                \ hi User3 term=bold cterm=bold ctermfg=015 ctermbg=010 |
+                \ hi User4 ctermfg=015 ctermbg=016
 augroup END
 " ==============================================================================
 " Mappings
