@@ -16,31 +16,20 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-endwise'
   Plug 'vimwiki/vimwiki'
   Plug 'ajh17/VimCompletesMe'
-  Plug 'ludovicchabant/vim-gutentags'
-  " Ruby Related
-  Plug 'tpope/vim-endwise'
-  Plug 'vim-ruby/vim-ruby'
+  Plug 'sheerun/vim-polyglot'
+  "Plug 'ludovicchabant/vim-gutentags'
   " Appearance Related
   Plug 'junegunn/goyo.vim'
   " Syntax Related
-  Plug 'scrooloose/syntastic'
   Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
 " ==============================================================================
 " Plugin Configuration
 " ==============================================================================
-
-" Syntastic configs
-let g:syntastic_stl_format = "%W{ [•%w] }%E{ [!%e] }"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-let g:syntastic_sh_checkers = [ 'shellcheck', 'sh' ]
 
 " Vimwiki Configs
 let g:vimwiki_list = [{'path': '~/Workbench/vimwiki/', 'auto_tags': 1}]

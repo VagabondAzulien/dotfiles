@@ -8,36 +8,38 @@
 set nocompatible                  " Be IMproved (https://goo.gl/2RiJoo)
 syntax on                         " Syntax hilighting
 filetype plugin indent on         " Recognize filetype, indent, plugin files
-set t_Co=256                      " Set number of colors (256)
 set encoding=utf-8                " Character encoding
 set autoread                      " Auto-reload files changed outside Vim
-set undofile                      " Enable persistent undo
-set showcmd                       " Shows you which commands you're typing
-set number                        " Enable line numbers
-set scrolloff=5                   " 5 lines of scroll buffer space
+set hidden                        " Allow for un-saved buffers
 
 set autoindent                    " Enable auto-indentation
 set expandtab                     " Use spaces instead of tab characters
 set tabstop=4                     " How many spaces a tab is
 set shiftwidth=4                  " How many spaces to shift
 set softtabstop=4                 " How many spaces to use when editing
+
+set number                        " Enable line numbers
+set wrap                          " Wrap text
 set textwidth=80                  " How long a line is
 set winwidth=90                   " Minimum width of a window
-set wrap                          " Wrap text
+set scrolloff=5                   " 5 lines of scroll buffer space
 
-set foldmethod=syntax             " Enable folding on a syntax level
+set foldmethod=indent             " Enable folding on a syntax level
+set foldlevelstart=99             " Don't start with sections folded
 
 set wildmenu                      " Enable wildmenu
 set wildmode:longest:full,full    " Configure wildmenu
 set ignorecase smartcase          " Search: ignore case, unless case matters
 set incsearch                     " Zoom to search results as I type
-set hlsearch                      " Hilight search results
+set nohlsearch                    " Don't highlight search by default
 
 let g:netrw_liststyle=3           " Netrw Tree list style
 
 augroup ruby_settings             " Settings for Ruby and Ruby-like langs
      autocmd!
-     autocmd FileType ruby,eruby,yaml set sw=2 sts=2
+     autocmd FileType ruby,eruby,yaml 
+                 \ setlocal shiftwidth=2 
+                 \          softtabstop=2
 augroup END
 
 augroup spellcheckr               " Spelling, for some files...
@@ -47,7 +49,8 @@ augroup END
 
 augroup lintr                     " Simple linting, based on :make!
     autocmd!
-    autocmd BufWritePost *.rb silent make! <afile> | silent redraw!
+    autocmd BufWritePost *.rb,*.sh
+                \ silent make! <afile> | silent redraw!
     autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 " ==============================================================================
@@ -55,23 +58,25 @@ augroup END
 " ==============================================================================
 set laststatus=2                                " Enable the statusline
 set statusline=                                 " Initialize it
-set statusline+=%m%1*%r%0*%h                    " Modified, RO, Help flags
+set statusline+=%3*%m%1*%r%0*                   " Modified, RO, Help flags
 set statusline+=%2*%{&spell?'[SPELL]':''}       " Spell flag
-set statusline+=%#StatusLine#
+set statusline+=%3*
 " Show the Fugitive-provided status line, if Fugitive is installed
 set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
-set statusline+=%#Pmenu#                        " Color change (see :hi)
+set statusline+=%4*                             " Color change (see :hi)
 set statusline+=\ %F                            " Full-path to current buffer
 set statusline+=%=                              " Switch to right-side
 set statusline+=%y\                             " Filetype
-set statusline+=%#StatusLine#                   " Color change (see :hi)
+set statusline+=%3*                             " Color change (see :hi)
 set statusline+=\|%4l\:%2c\|                    " Line and column
 
 augroup user_stl_colors
     autocmd!
     autocmd ColorScheme *
                 \ hi User1 term=bold cterm=bold ctermfg=167 ctermbg=239 |
-                \ hi User2 term=bold cterm=bold ctermfg=111 ctermbg=239
+                \ hi User2 term=bold cterm=bold ctermfg=111 ctermbg=239 |
+                \ hi User3 term=bold cterm=bold ctermfg=255 ctermbg=239 |
+                \ hi User4 ctermfg=255 ctermbg=0
 augroup END
 " ==============================================================================
 " Mappings
@@ -94,7 +99,7 @@ command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
 " Simple mapping to dotfiles directory (f = current tab; F = new tab)
 nnoremap <silent> <leader>f :edit ~/.dotfiles/<CR>
 nnoremap <silent> <leader>F :tabnew ~/.dotfiles/<CR>
-" Emulatae vinegar.vim
+" Emulate vinegar.vim
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 " ==============================================================================
 " Plugins
