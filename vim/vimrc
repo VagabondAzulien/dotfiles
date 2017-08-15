@@ -44,6 +44,12 @@ augroup spellcheckr               " Spelling, for some files...
     autocmd!
     autocmd BufNewFile,BufRead *.md,*.rdoc,*.txt,*.wiki setlocal spell
 augroup END
+
+augroup lintr                     " Simple linting, based on :make!
+    autocmd!
+    autocmd BufWritePost *.rb silent make! <afile> | silent redraw!
+    autocmd QuickFixCmdPost [^l]* cwindow
+augroup END
 " ==============================================================================
 " Status Line
 " ==============================================================================
