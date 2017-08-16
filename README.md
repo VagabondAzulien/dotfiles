@@ -1,4 +1,4 @@
-#Dot Files
+# Dot Files
 
 Configuration files (often called dot-files because they start with a ".") for
 the applications I use on a regular basis. 
@@ -6,30 +6,30 @@ the applications I use on a regular basis.
 More details about specific application configurations can be found in their
 respective directories.
 
-###Requirements
+### Requirements
 
 You'll need `make` for the automated linking of the dotfiles.
 Obviously you'll need the related program for each config file to be applicable.
 
-##Installation
+## Installation
 > 1. git clone git@github.com:VagabondAzulien/dotfiles.git
 >
 > 2. cd dotfiles
 >
 > 3. Type `make` to see your options
 
-##Applications Configured
+## Applications Configured
 * Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]\[ vim/vimrc.bundles =>
   ~/.vimrc.bundles \]
 * Git \[ git/gitconfig => ~/.gitconfig \]\[ git/gitignore => ~/.gitignore \]
 * Tmux \[ tmux/tmux.conf => ~/.tmux.conf \]
 
-##To-Do
+## To-Do
 * [ ] irssi config files
 * [ ] Bash config files
 * [ ] Improve makefile
 
-##License
+## License
 All files are licensed under the [WTFPL](http://www.wtfpl.net/), the full
 license text of which can be found below.
 
