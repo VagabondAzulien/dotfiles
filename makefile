@@ -1,5 +1,6 @@
-# Makefile for Niblock Dotfiles
-
+#===============================================================================
+# Makefile for niblock dotfiles || $ make for options
+#===============================================================================
 .PHONY: help \
      link-dotfiles \
      build-default \
@@ -15,18 +16,18 @@
      install-irssi
 
 .DEFAULT-GOAL := help
-
-#Utility Recipies
-
+#===============================================================================
+# Utility
+#===============================================================================
 help:			## Display this menu
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
         awk 'BEGIN {FS = ":.*?## "}; {printf "%-25s %s\n", $$1, $$2}'
 
 link-dotfiles:		## Create dotfiles link in Home directory
 	ln -s -- "$(CURDIR)" "$(HOME)"/.dotfiles
-
-#Bundle Recipies
-
+#===============================================================================
+# Bundles
+#===============================================================================
 build-default:		## Create default environment, using all dotfiles
 build-default: link-dotfiles \
      install-vim-config \
@@ -44,8 +45,9 @@ build-simple: install-vim-config \
 
 clean-all:		## Remove all dotfiles linked via this makefile
 
-#Program Recipies
-
+#===============================================================================
+# Dotfiles
+#===============================================================================
 install-vim-config:	## Create vimrc file in Home directory
 	@if [ -L "$(HOME)"/.vimrc ] ; then \
 	       echo "File vimrc already linked; skipping." ; \
@@ -63,15 +65,15 @@ install-vim-plugin:	## Create vimrc-plugins (Plugin file) in Home directory
 	  fi
 
 install-vim-dir:	## Create vim directory in Home directory
-	ln -s -- "$(CURDIR)"/vim/vim/ "$(HOME)"/.vim
+	@if [ -L "$(HOME)"/.vim ] ; then \
+	       echo "Vim directory already linked; skipping." ; \
+	 else \
+	       echo "Linking vim/ to ~/.vim" ; \
+		   ln -s -- "$(CURDIR)"/vim/vim/ "$(HOME)"/.vim ; \
+	 fi
 
 install-git:		## Create git config and ignore files in Home directory
-	@if [ -L "$(HOME)"/.gitconfig ] ; then \
-	       echo "File gitconfig already linked; skipping." ; \
-	  else \
-	       echo "Linking gitconfig to ~/.gitconfig" ; \
-	       ln -s -- "$(CURDIR)"/git/gitconfig "$(HOME)"/.gitconfig ; \
-	  fi
+	cp -i -- "$(CURDIR)"/git/gitconfig "$(HOME)"/.gitconfig
 	@if [ -L "$(HOME)"/.gitignore ] ; then \
 	       echo "File gitignore already linked; skipping." ; \
 	  else \
