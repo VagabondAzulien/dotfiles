@@ -8,9 +8,4 @@ buffTime="$(TZ=America/New_York date +'%b %d %R')"
 utcTime="$(date -u +%R)"
 bangTime="$(TZ=Asia/Kolkata date +%R)"
 
-caliForm="#[fg=red]<][ $caliTime ] "
-buffForm="#[fg=green]<][ $buffTime | #[fg=red](!)#[fg=green]][> "
-utcForm="#[fg=blue][ $utcTime ][> "
-bangForm="#[fg=magenta][ $bangTime ][>>"
-
-echo "$caliForm""$buffForm""$utcForm""$bangForm"" "
+echo "<][ $caliTime ] <][ $buffTime ][> [ $utcTime ][> [ $bangTime ][>> "
