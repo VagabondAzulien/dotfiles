@@ -18,7 +18,6 @@ set tabstop=4                     " How many spaces a tab is
 set shiftwidth=4                  " How many spaces to shift
 set softtabstop=4                 " How many spaces to use when editing
 
-colorscheme minimalist            " Set colorscheme
 set number                        " Enable line numbers
 set wrap                          " Wrap text
 set textwidth=80                  " How long a line is
@@ -57,22 +56,8 @@ augroup lintr                     " Simple linting, based on :make!
     autocmd QuickFixCmdPost [^l]* cwindow
 augroup END
 " ==============================================================================
-" Status Line
+" Colors
 " ==============================================================================
-set laststatus=2                                " Enable the statusline
-set statusline=                                 " Initialize it
-set statusline+=%3*%m%1*%r%0*                   " Modified, RO, Help flags
-set statusline+=%2*%{&spell?'[SPELL]':''}       " Spell flag
-set statusline+=%3*
-" Show the Fugitive-provided status line, if Fugitive is installed
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
-set statusline+=%4*                             " Color change (see :hi)
-set statusline+=\ %F                            " Full-path to current buffer
-set statusline+=%=                              " Switch to right-side
-set statusline+=%y\                             " Filetype
-set statusline+=%3*                             " Color change (see :hi)
-set statusline+=\|%4l\:%2c\|                    " Line and column
-
 augroup user_stl_colors                         " Custom status-line colors
     autocmd!
     autocmd ColorScheme *
@@ -81,6 +66,24 @@ augroup user_stl_colors                         " Custom status-line colors
                 \ hi User3 term=bold cterm=bold ctermfg=015 ctermbg=010 |
                 \ hi User4 ctermfg=015 ctermbg=016
 augroup END
+
+colorscheme minimalist                          " Set colorscheme
+" ==============================================================================
+" Status Line
+" ==============================================================================
+set laststatus=2                                " Enable the statusline
+set statusline=                                 " Initialize it
+set statusline+=%3*%m                           " Modified flag
+" Show the Fugitive-provided status line, if Fugitive is installed
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+set statusline+=%4*                             " Color change (see :hi)
+set statusline+=\ %F                            " Full-path to current buffer
+set statusline+=%=                              " Switch to right-side
+set statusline+=%y\                             " Filetype
+set statusline+=%3*                             " Color change (see :hi)
+set statusline+=\|%4l\:%2c\|                    " Line and column
+set statusline+=%2*%{&spell?'[SPELL]':''}       " Spell flag
+set statusline+=%1*%r%0*                        " Read-only flag
 " ==============================================================================
 " Mappings
 " ==============================================================================
