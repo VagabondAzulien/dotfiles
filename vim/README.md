@@ -1,6 +1,6 @@
-#Vim Configuration Files
+# Vim Configuration Files
 
-My vim configuration is relatively straight forward. I comment most lines.
+My vim configuration is relatively straight forward and thoroughly commented.
 
 ### Bundles File
 The vimrc.bundles file stores the plugin information for
@@ -11,7 +11,6 @@ I want a plugin-free install, I can ignore this file and still run fine.
 
 ## Notable Plugins
 * [Fugitive](https://github.com/tpope/vim-fugitive) for nice Git integration.
-* [Vinegar](https://github.com/tpope/vim-vinegar) for file browsing.
+* [Polyglot](https://github.com/sheerun/vim-polyglot) for language files.
 * [vimwiki](https://github.com/vimwiki/vimwiki) for info, diary and notes.
-* [Startify](https://github.com/mhinz/vim-startify) for a nice start-page
-* [Syntastic](https://github.com/scrooloose/syntastic) for syntax checking.
+* [goyo](https://github.com/junegunn/goyo.vim) for zen-like text editing.

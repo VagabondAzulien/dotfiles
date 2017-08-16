@@ -73,7 +73,7 @@ set statusline+=%y\                             " Filetype
 set statusline+=%3*                             " Color change (see :hi)
 set statusline+=\|%4l\:%2c\|                    " Line and column
 
-augroup user_stl_colors
+augroup user_stl_colors                         " Custom status-line colors
     autocmd!
     autocmd ColorScheme *
                 \ hi User1 term=bold cterm=bold ctermfg=009 ctermbg=010 |

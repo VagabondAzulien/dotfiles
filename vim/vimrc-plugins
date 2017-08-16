@@ -1,7 +1,6 @@
 " ==============================================================================
 " vimrc-plugins: Plug-in configuration. Using vim-plug.
 " ==============================================================================
-
 " Fetch & Install Self
 if empty(glob('~/.vim/autoload/plug.vim'))
      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -10,7 +9,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-  " Current list of plugins
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-tbone'
   Plug 'tpope/vim-surround'
@@ -21,16 +19,13 @@ call plug#begin('~/.vim/bundle')
   Plug 'ajh17/VimCompletesMe'
   Plug 'sheerun/vim-polyglot'
   "Plug 'ludovicchabant/vim-gutentags'
-  " Appearance Related
   Plug 'junegunn/goyo.vim'
-  " Syntax Related
   Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
 " ==============================================================================
 " Plugin Configuration
 " ==============================================================================
-
 " Vimwiki Configs
 let g:vimwiki_list = [{'path': '~/Workbench/vimwiki/', 'auto_tags': 1}]
 "" Insert my journal template, and the current date
