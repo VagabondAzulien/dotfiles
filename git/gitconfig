@@ -9,4 +9,4 @@
     relativePaths = false
 
 [core]
-    excludesfile = ~/.gitignore
+    excludesFile = ~/.gitignore
