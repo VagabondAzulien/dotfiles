@@ -1,54 +1,81 @@
-#-----------------------------------------------------------------------------#
-# General Bash Configuration File ## source ~/.bashrc ## niblock             ##
-#-----------------------------------------------------------------------------#
-
+#!/bin/bash
+#===============================================================================
+# bash config for niblock :: source ~/.bashrc
+#===============================================================================
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
-
-#-----------------------------------------------------------------------------#
+#===============================================================================
 # Prompt
-#-----------------------------------------------------------------------------#
-
-
-#-----------------------------------------------------------------------------#
+#===============================================================================
+if [[ ${EUID} == 0 ]] ; then
+        export PS1="\t \u@\h:\w \$"
+    else
+        mp_time="\[\$(tput setaf 6)\][ \t ]"
+        mp_who="\[\$(tput setaf 2)\]\u\[\$(tput setaf 7)\]@\\[\$(tput setaf 2)\]\h"
+        mp_whr="\[\$(tput setaf 7)\]:\[\$(tput setaf 5)\]\w"
+        mp_git="\[\$(tput sgr0)\]\[\$(show_git_info)\] "
+        export PS1="$mp_time $mp_who$mp_whr\r\n$mp_git\$ "
+fi
+#===============================================================================
 # Aliases
-#-----------------------------------------------------------------------------#
-
+#===============================================================================
 alias tssh="source ~/.ssh/auth_ssh; ssh -A"
 complete -F _ssh tssh
-
-#-----------------------------------------------------------------------------#
+#===============================================================================
 # Functions
-#-----------------------------------------------------------------------------#
-
+#===============================================================================
 #If redshift wasn't automatically started, this will do it
 function tint(){
     redshift -l 42.8864500:-78.8783700 -t 5000:4000 &
 }
-
 # Function for keeping ssh-agent happy
 function yssh(){
     echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" > ~/.ssh/auth_ssh
 }
-
-#-----------------------------------------------------------------------------#
+# Determine git branch and index status
+function show_git_info(){
+    local results=""
+    type git >/dev/null 2>&1
+    if [[ $? == 0 ]] ; then
+        local bn=$(git branch 2> /dev/null |\
+            awk '{ print $2; }')
+        if [[ -n "$bn" ]] ; then
+            git diff-index --quiet HEAD --
+            if [[ $? == 0 ]] ; then
+                results="($(tput setaf 2)$bn$(tput sgr0))"
+            else
+                results="($(tput setaf 1)$bn$(tput sgr0))"
+            fi
+        fi
+        echo $results
+    fi
+}
+#===============================================================================
 # Path
-#-----------------------------------------------------------------------------#
-
+#===============================================================================
 # Ruby Gems
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
-
 # RVM
 PATH="$HOME/.rvm/bin:$PATH"
-
-# Add Python projects to path
-PYTHONPATH="${PYTHONPATH}:/home/niblock/Lab/gomez_audit"
-
+# Add Python to path
+PYTHONPATH="${PYTHONPATH}"
+#===============================================================================
+# Defaults
+#===============================================================================
+# Set editor, if Vim is available
+type vim >/dev/null 2>&1
+if [[ $? == 0 ]]; then
+    export EDITOR=vim
+fi
+# History size and time-format
+export HISTSIZE=10000
+export HISTTIMEFORMAT="%s "
+# Paths
 export PYTHONPATH
 export PATH
-
+# Yubikey support
 export SSH_AUTH_SOCK=$HOME/.yubiagent/sock
