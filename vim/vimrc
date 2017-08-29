@@ -84,7 +84,7 @@ set statusline=                                 " Initialize it
 set statusline+=%3*%m                           " Modified flag
 set statusline+=%4*                             " Color change (see :hi)
 set statusline+=\ %F                            " Full-path to current buffer
-set statusline+=%5*%{GitBranch()}
+set statusline+=%5*%{GitBranch()}               " Show Git branch, if applicable
 set statusline+=%=                              " Switch to right-side
 set statusline+=%4*%y\                          " Filetype
 set statusline+=%3*                             " Color change (see :hi)
