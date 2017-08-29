@@ -39,8 +39,7 @@ function show_git_info(){
     local results=""
     type git >/dev/null 2>&1
     if [[ $? == 0 ]] ; then
-        local bn=$(git branch 2> /dev/null |\
-            awk '{ print $2; }')
+        local bn=$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n')
         if [[ -n "$bn" ]] ; then
             git diff-index --quiet HEAD --
             if [[ $? == 0 ]] ; then
