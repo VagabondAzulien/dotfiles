@@ -11,6 +11,7 @@ filetype plugin indent on         " Recognize filetype, indent, plugin files
 set encoding=utf-8                " Character encoding
 set autoread                      " Auto-reload files changed outside Vim
 set hidden                        " Allow for un-saved buffers
+set autochdir                     " Change directory automatically
 
 set autoindent                    " Enable auto-indentation
 set expandtab                     " Use spaces instead of tab characters
@@ -64,22 +65,28 @@ augroup user_stl_colors                         " Custom status-line colors
                 \ hi User1 term=bold cterm=bold ctermfg=Red ctermbg=DarkGrey |
                 \ hi User2 term=bold cterm=bold ctermfg=Cyan ctermbg=DarkGrey |
                 \ hi User3 term=bold cterm=bold ctermfg=White ctermbg=DarkGrey |
-                \ hi User4 ctermfg=White ctermbg=Black
+                \ hi User4 ctermfg=White ctermbg=Black |
+                \ hi User5 ctermfg=150 ctermbg=Black
 augroup END
 
 colorscheme minimalist                          " Set colorscheme
 " ==============================================================================
 " Status Line
 " ==============================================================================
+function! GitBranch()                           " Fetch the Git branch of cwd
+    let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null
+                \ | tr -d '\n'")
+    return strlen(l:branchname) > 0 ? '#'.l:branchname : ''
+endfunction
+
 set laststatus=2                                " Enable the statusline
 set statusline=                                 " Initialize it
 set statusline+=%3*%m                           " Modified flag
-" Show the Fugitive-provided status line, if Fugitive is installed
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 set statusline+=%4*                             " Color change (see :hi)
 set statusline+=\ %F                            " Full-path to current buffer
+set statusline+=%5*%{GitBranch()}
 set statusline+=%=                              " Switch to right-side
-set statusline+=%y\                             " Filetype
+set statusline+=%4*%y\                          " Filetype
 set statusline+=%3*                             " Color change (see :hi)
 set statusline+=\|%4l\:%2c\|                    " Line and column
 set statusline+=%2*%{&spell?'[SPELL]':''}       " Spell flag
