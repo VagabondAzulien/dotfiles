@@ -16,7 +16,7 @@ if [[ ${EUID} == 0 ]] ; then
         mp_who="\[\$(tput setaf 2)\]\u\[\$(tput setaf 7)\]@\\[\$(tput setaf 2)\]\h"
         mp_whr="\[\$(tput setaf 7)\]:\[\$(tput setaf 5)\]\w"
         mp_git="\[\$(tput sgr0)\]\[\$(show_git_info)\] "
-        export PS1="$mp_time $mp_who$mp_whr\r\n$mp_git\$ "
+        export PS1="$mp_time $mp_who$mp_whr$mp_git\n\$ "
 fi
 #===============================================================================
 # Aliases
@@ -43,9 +43,9 @@ function show_git_info(){
         if [[ -n "$bn" ]] ; then
             git diff-index --quiet HEAD --
             if [[ $? == 0 ]] ; then
-                results="($(tput setaf 2)$bn$(tput sgr0))"
+                results="#$(tput setaf 2)$bn$(tput sgr0)"
             else
-                results="($(tput setaf 1)$bn$(tput sgr0))"
+                results="#$(tput setaf 1)$bn$(tput sgr0)"
             fi
         fi
         echo $results
