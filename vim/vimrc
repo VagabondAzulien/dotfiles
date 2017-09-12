@@ -7,7 +7,7 @@
 " ==============================================================================
 set nocompatible                  " Be IMproved (https://goo.gl/2RiJoo)
 if !exists('g:syntax_on')
-    syntax on                     " Syntax hilighting
+    syntax enable                 " Syntax hilighting
 endif
 filetype plugin indent on         " Recognize filetype, indent, plugin files
 set encoding=utf-8                " Character encoding
