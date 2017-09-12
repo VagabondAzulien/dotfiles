@@ -6,7 +6,9 @@
 " General Settings
 " ==============================================================================
 set nocompatible                  " Be IMproved (https://goo.gl/2RiJoo)
-syntax on                         " Syntax hilighting
+if !exists('g:syntax_on')
+    syntax on                     " Syntax hilighting
+endif
 filetype plugin indent on         " Recognize filetype, indent, plugin files
 set encoding=utf-8                " Character encoding
 set autoread                      " Auto-reload files changed outside Vim
@@ -47,7 +49,8 @@ augroup END
 
 augroup spellcheckr               " Spelling, for some files...
     autocmd!
-    autocmd BufNewFile,BufRead *.md,*.rdoc,*.txt,*.wiki setlocal spell
+    autocmd BufNewFile,BufRead *.md,*.rdoc,*.txt,*.wiki 
+                \ setlocal spell
 augroup END
 
 augroup lintr                     " Simple linting, based on :make!
@@ -66,14 +69,15 @@ augroup user_stl_colors                         " Custom status-line colors
                 \ hi User2 term=bold cterm=bold ctermfg=Cyan ctermbg=DarkGrey |
                 \ hi User3 term=bold cterm=bold ctermfg=White ctermbg=DarkGrey |
                 \ hi User4 ctermfg=White ctermbg=Black |
-                \ hi User5 ctermfg=150 ctermbg=Black
+                \ hi User5 ctermfg=150 ctermbg=Black |
+                \ hi User6 ctermfg=Grey ctermbg=Black
 augroup END
 
 colorscheme minimalist                          " Set colorscheme
 " ==============================================================================
 " Status Line
 " ==============================================================================
-function! GitBranch()                           " Fetch the Git branch of cwd
+function! GitBranch() abort                     " Fetch the Git branch of cwd
     let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null
                 \ | tr -d '\n'")
     return strlen(l:branchname) > 0 ? '#'.l:branchname : ''
@@ -82,8 +86,8 @@ endfunction
 set laststatus=2                                " Enable the statusline
 set statusline=                                 " Initialize it
 set statusline+=%3*%m                           " Modified flag
-set statusline+=%4*                             " Color change (see :hi)
-set statusline+=\ %F                            " Full-path to current buffer
+set statusline+=%6*%{expand('%:p:h')}/          " Full-path to current buffer
+set statusline+=%4*%t                           " File name
 set statusline+=%5*%{GitBranch()}               " Show Git branch, if applicable
 set statusline+=%=                              " Switch to right-side
 set statusline+=%4*%y\                          " Filetype
@@ -100,7 +104,7 @@ nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap <silent> ^ g^
 nnoremap <silent> $ g$
-" Toggle fold with space, if we're in a fold, otherwise just space
+" Toggle fold with space if we're in a fold, otherwise just space
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 " Allow saving of files as sudo when I forgot to start vim using sudo.
@@ -112,7 +116,7 @@ command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
 " Simple mapping to dotfiles directory (f = current tab; F = new tab)
 nnoremap <silent> <leader>f :edit ~/.dotfiles/<CR>
 nnoremap <silent> <leader>F :tabnew ~/.dotfiles/<CR>
-" Emulate vinegar.vim
+" Emulate vim-vinegar
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 " ==============================================================================
 " Plugins
