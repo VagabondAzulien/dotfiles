@@ -5,41 +5,42 @@
 " ==============================================================================
 " General Settings
 " ==============================================================================
-set nocompatible                  " Be IMproved (https://goo.gl/2RiJoo)
+set nocompatible                                " Why? (https://goo.gl/2RiJoo)
 if !exists('g:syntax_on')
-    syntax enable                 " Syntax hilighting
+    syntax enable                               " Syntax hilighting
 endif
-filetype plugin indent on         " Recognize filetype, indent, plugin files
-set encoding=utf-8                " Character encoding
-set autoread                      " Auto-reload files changed outside Vim
-set hidden                        " Allow for un-saved buffers
-set autochdir                     " Change directory automatically
+filetype plugin indent on                       " Enable filetype/indent/plugins
+set encoding=utf-8                              " Character encoding
+set autoread                                    " Auto-reload modified files
+set hidden                                      " Allow for un-saved buffers
+set autochdir                                   " Change directory automatically
+set spelllang=en_us                             " Set default dictionary
 
-set autoindent                    " Enable auto-indentation
-set expandtab                     " Use spaces instead of tab characters
-set tabstop=4                     " How many spaces a tab is
-set shiftwidth=4                  " How many spaces to shift
-set softtabstop=4                 " How many spaces to use when editing
+set autoindent                                  " Enable auto-indentation
+set expandtab                                   " Spaces for tab
+set tabstop=4                                   " How many spaces a tab is
+set shiftwidth=4                                " Spaces per shift
+set softtabstop=4                               " Spaces to use when editing
 
-set number                        " Enable line numbers
-set wrap                          " Wrap text
-set textwidth=80                  " How long a line is
-set winwidth=90                   " Minimum width of a window
-set scrolloff=5                   " 5 lines of scroll buffer space
+set number                                      " Enable line numbers
+set wrap                                        " Wrap text
+set textwidth=80                                " How long a line is
+set winwidth=90                                 " Minimum width of a window
+set scrolloff=5                                 " 5 line scroll buffer
 
-set foldmethod=indent             " Enable folding on a syntax level
-set foldlevelstart=99             " Don't start with sections folded
+set foldmethod=indent                           " Fold on indent
+set foldlevelstart=99                           " No default folding
 
-set wildmenu                      " Enable wildmenu
-set wildmode:longest:full,full    " Configure wildmenu
-set ignorecase smartcase          " Search: ignore case, unless case matters
-set incsearch                     " Zoom to search results as I type
-set nohlsearch                    " Don't highlight search by default
+set wildmenu                                    " Enable wildmenu
+set wildmode:longest:full,full                  " Configure wildmenu
+set ignorecase smartcase                        " Ignore case, unless it matters
+set incsearch                                   " Zoom to results as I search
+set nohlsearch                                  " Disable search highlighting
 
-let g:netrw_liststyle=3           " Netrw Tree list style
-let g:netrw_banner=0              " Disable the netrw banner
+let g:netrw_liststyle=3                         " Netrw Tree list style
+let g:netrw_banner=0                            " Disable the netrw banner
 
-augroup ruby_settings             " Settings for Ruby and Ruby-like langs
+augroup ruby_settings                           " Custom settings: Ruby{-like}
      autocmd!
      autocmd FileType ruby,eruby,yaml 
                  \ setlocal shiftwidth=2 
@@ -47,13 +48,13 @@ augroup ruby_settings             " Settings for Ruby and Ruby-like langs
                  \          makeprg=rubocop
 augroup END
 
-augroup spellcheckr               " Spelling, for some files...
+augroup spellcheckr                             " Spelling, for some files...
     autocmd!
     autocmd BufNewFile,BufRead *.md,*.rdoc,*.txt,*.wiki 
                 \ setlocal spell
 augroup END
 
-augroup lintr                     " Simple linting, based on :make!
+augroup lintr                                   " Linting, based on :make!
     autocmd!
     autocmd BufWritePost *.rb,*.sh
                 \ silent make! <afile> | silent redraw!
@@ -73,7 +74,9 @@ augroup user_stl_colors                         " Custom status-line colors
                 \ hi User6 ctermfg=Grey ctermbg=Black
 augroup END
 
-colorscheme minimalist                          " Set colorscheme
+if filereadable(expand('~/.vim/colors/minimalist.vim'))
+    colorscheme minimalist                      " Set colorscheme
+endif
 " ==============================================================================
 " Status Line
 " ==============================================================================
@@ -98,7 +101,7 @@ set statusline+=%1*%r%0*                        " Read-only flag
 " ==============================================================================
 " Mappings
 " ==============================================================================
-let mapleader = ","
+let mapleader = ','
 " Make moving up/down work on wrapped lines of text
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -110,17 +113,17 @@ vnoremap <Space> zf
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 " Remove Trailing Whitespaace
-nnoremap <silent> <leader>rtw :%s/\s\+$//e<CR>
+nnoremap <silent> <leader>rtw :<C-u>%s/\s\+$//e<CR>
 " Open help topic in a full new tab
 command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
 " Simple mapping to dotfiles directory (f = current tab; F = new tab)
-nnoremap <silent> <leader>f :edit ~/.dotfiles/<CR>
-nnoremap <silent> <leader>F :tabnew ~/.dotfiles/<CR>
+nnoremap <silent> <leader>f :<C-u>edit ~/.dotfiles/<CR>
+nnoremap <silent> <leader>F :<C-u>tabnew ~/.dotfiles/<CR>
 " Emulate vim-vinegar
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 " ==============================================================================
 " Plugins
 " ==============================================================================
-if filereadable(expand("~/.vimrc-plugins"))
+if filereadable(expand('~/.vimrc-plugins'))
     source ~/.vimrc-plugins
 endif
