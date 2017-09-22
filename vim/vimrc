@@ -6,19 +6,20 @@
 " General Settings
 " ==============================================================================
 set nocompatible                                " Why? (https://goo.gl/2RiJoo)
+
 if !exists('g:syntax_on')
     syntax enable                               " Syntax hilighting
 endif
+
 filetype plugin indent on                       " Enable filetype/indent/plugins
 set encoding=utf-8                              " Character encoding
+set spelllang=en_us                             " Set default dictionary
 set autoread                                    " Auto-reload modified files
 set hidden                                      " Allow for un-saved buffers
 set autochdir                                   " Change directory automatically
-set spelllang=en_us                             " Set default dictionary
 
 set autoindent                                  " Enable auto-indentation
 set expandtab                                   " Spaces for tab
-set tabstop=4                                   " How many spaces a tab is
 set shiftwidth=4                                " Spaces per shift
 set softtabstop=4                               " Spaces to use when editing
 
