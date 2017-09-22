@@ -10,17 +10,16 @@ endif
 
 call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-tbone'
-  Plug 'tpope/vim-surround'
+  Plug 'vimwiki/vimwiki'
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-endwise'
-  Plug 'vimwiki/vimwiki'
+
   Plug 'ajh17/VimCompletesMe'
-  Plug 'sheerun/vim-polyglot'
   "Plug 'ludovicchabant/vim-gutentags'
+  Plug 'sheerun/vim-polyglot'
+
   Plug 'junegunn/goyo.vim'
-  Plug 'tmux-plugins/vim-tmux'
+  Plug 'tpope/vim-tbone'
 call plug#end()
 
 " ==============================================================================
@@ -30,7 +29,7 @@ call plug#end()
 let g:vimwiki_list = [{'path': '~/Workbench/vimwiki/', 'auto_tags': 1}]
 "" Insert my journal template, and the current date
 nnoremap <silent><leader>tj :call NewJournal()<CR>
-function! NewJournal()
+function! NewJournal() abort
      .-1read ~/.vim/templates/journal
      s/Date/\=strftime("%A, %B %d")/
 endfunction
