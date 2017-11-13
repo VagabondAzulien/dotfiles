@@ -1,0 +1,70 @@
+#!/bin/bash
+#===============================================================================
+# remote bash config for niblock :: source ~/.bashrc
+#===============================================================================
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+#===============================================================================
+# Prompt
+#===============================================================================
+if [[ ${EUID} == 0 ]] ; then
+    export PS1="\t \u@\h:\w \$"
+else
+    mp_time="\[\$(tput setaf 3)\][\t]"
+    mp_info="\u\[\$(tput setaf 7)\]@\h\[\$(tput setaf 3)\]:\w"
+    mp_git="\[\$(tput sgr0)\]\[\$(show_git_info)\] "
+    export PS1="$mp_time$mp_info$mp_git\n\$ "
+fi
+#===============================================================================
+# Aliases
+#===============================================================================
+#===============================================================================
+# Functions
+#===============================================================================
+# Determine git branch and index status
+function show_git_info(){
+    local results=""
+    type git >/dev/null 2>&1
+    if [[ $? == 0 ]] ; then
+        local bn=$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n')
+        if [[ -n "$bn" ]] ; then
+            git diff-index --quiet HEAD --
+            if [[ $? == 0 ]] ; then
+                results="#$(tput setaf 2)$bn$(tput sgr0)"
+            else
+                results="#$(tput setaf 1)$bn$(tput sgr0)"
+            fi
+        fi
+        echo $results
+    fi
+}
+#===============================================================================
+# Path
+#===============================================================================
+# rbenv
+PATH="$HOME/.rbenv/bin:$PATH"
+# Add Python to path
+PYTHONPATH="${PYTHONPATH}"
+export PYTHONPATH
+# RVM. Make sure this is the last PATH variable change.
+PATH="$PATH:$HOME/.rvm/bin"
+# Set it.
+export PATH
+#===============================================================================
+# Defaults
+#===============================================================================
+# Set editor, if Vim is available
+type vim >/dev/null 2>&1
+if [[ $? == 0 ]]; then
+    export EDITOR=vim
+fi
+# History size and time-format
+export HISTSIZE=10000
+export HISTTIMEFORMAT="%s "
+#===============================================================================
+# Random Shit often auto-added
+#===============================================================================
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
