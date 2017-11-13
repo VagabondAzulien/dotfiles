@@ -3,13 +3,10 @@
 Configuration files (often called dot-files because they start with a ".") for
 the applications I use on a regular basis. 
 
-More details about specific application configurations can be found in their
-respective directories.
-
 ### Requirements
 
-You'll need `make` for the automated linking of the dotfiles.
-Obviously you'll need the related program for each config file to be applicable.
+You'll need `make` for the automated linking of the dotfiles.  Obviously you'll
+need the related program for each config file to be applicable.
 
 ## Installation
 > 1. git clone git@github.com:VagabondAzulien/dotfiles.git
@@ -48,12 +45,20 @@ enable mouse mode, and have custom colors configured.
 - clocks.sh: My custom status bar. Shows time for 4 different time zones.
 
 ### Git
+My git configuration is a skeleton `gitconfig` file, and an always-growing
+`gitignore` file. Unlike most other files, the `gitconfig` file isn't symlinked,
+since it changes based on which machine I'm on.
 
 ### Bash
+My bash configuration includes a custom prompt, several PATH additions, and
+several custom functions. Nothing crazy, nothing revolutionary, but definitely
+some improvements for my environment.
+
+The `bashrc-remote` file I use for any remote environments I'm in. The prompt is
+different, and some of the functions aren't included.
 
 ## To-Do
 * [ ] irssi config files
-* [ ] Bash config files
 * [ ] Improve makefile
 
 ## License
