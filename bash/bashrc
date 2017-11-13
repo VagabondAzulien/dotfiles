@@ -28,7 +28,12 @@ complete -F _ssh tssh
 #===============================================================================
 #If redshift wasn't automatically started, this will do it
 function tint(){
-    redshift -l 42.8864500:-78.8783700 -t 5000:4000 &
+    type redshift >/dev/null 2>&1
+    if [[ $? == 0 ]]; then
+        redshift -l 42.8864500:-78.8783700 -t 5000:4000 &
+    else
+        echo "Redshift not installed"
+    fi
 }
 # Function for keeping ssh-agent happy
 function yssh(){
@@ -64,7 +69,7 @@ function sojourner_tmux(){
         # Attack to the Sojourner session
         tmux attach -t Sojourner
     else
-        echo "Nope. No tmux. Install that sucka"
+        echo "Tmux not installed."
     fi
 }
 #===============================================================================
