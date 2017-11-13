@@ -19,10 +19,37 @@ Obviously you'll need the related program for each config file to be applicable.
 > 3. Type `make` to see your options
 
 ## Applications Configured
-* Vim \[ vim/vim/ => ~/.vim \]\[ vim/vimrc => ~/.vimrc \]\[ vim/vimrc.bundles =>
-  ~/.vimrc.bundles \]
-* Git \[ git/gitconfig => ~/.gitconfig \]\[ git/gitignore => ~/.gitignore \]
-* Tmux \[ tmux/tmux.conf => ~/.tmux.conf \]
+
+### Vim
+My vim configuration is relatively straight forward and thoroughly commented.
+
+#### Plugin File
+The vimrc-plugins file stores the plugin information for
+[Vim-Plug](https://github.com/junegunn/vim-plug). Included in the file is a
+command to check for and pull-down the vim-plug files, if not previously
+installed. All configurations related to plugins goes into this file also, so if
+I want a plugin-free install, I can ignore this file and still run fine.
+
+Notable Plugins
+* [Fugitive](https://github.com/tpope/vim-fugitive) for nice Git integration.
+* [Polyglot](https://github.com/sheerun/vim-polyglot) for language files.
+* [vimwiki](https://github.com/vimwiki/vimwiki) for info, diary and notes.
+* [goyo](https://github.com/junegunn/goyo.vim) for zen-like text editing.
+
+### Tmux
+My tmux configuration is very straight forward and fully commented. Of note, I
+enable mouse mode, and have custom colors configured.
+
+#### Tmux Plugins
+- [TPM](https://www.github.com/tmux-plugins/tpm): The TMUX Plugin Manager
+- [Scroll-Wheel Copy Mode](https://www.github.com/nhdaly/tmux-scroll-copy-mode)
+
+#### Custom Scripts
+- clocks.sh: My custom status bar. Shows time for 4 different time zones.
+
+### Git
+
+### Bash
 
 ## To-Do
 * [ ] irssi config files
