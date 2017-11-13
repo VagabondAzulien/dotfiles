@@ -51,17 +51,34 @@ function show_git_info(){
         echo $results
     fi
 }
+# Start tmux session: Sojourner
+function sojourner_tmux(){
+    type tmux >/dev/null 2>&1
+    if [[ $? == 0 ]]; then
+        tmux has-session -t Sojourner &>/dev/null
+        # If there is no session named Sojourner
+        if [ $? != 0 ] ; then
+             # Create a new session named Sojourner
+             tmux new-session -s Sojourner -d -c ~/
+        fi
+        # Attack to the Sojourner session
+        tmux attach -t Sojourner
+    else
+        echo "Nope. No tmux. Install that sucka"
+    fi
+}
 #===============================================================================
 # Path
 #===============================================================================
-# Ruby Gems
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-# RVM
-PATH="$HOME/.rvm/bin:$PATH"
+# rbenv
+PATH="$HOME/.rbenv/bin:$PATH"
 # Add Python to path
 PYTHONPATH="${PYTHONPATH}"
+export PYTHONPATH
+# RVM. Make sure this is the last PATH variable change.
+PATH="$PATH:$HOME/.rvm/bin"
+# Set it.
+export PATH
 #===============================================================================
 # Defaults
 #===============================================================================
@@ -73,8 +90,11 @@ fi
 # History size and time-format
 export HISTSIZE=10000
 export HISTTIMEFORMAT="%s "
-# Paths
-export PYTHONPATH
-export PATH
+#===============================================================================
+# Random Shit often auto-added
+#===============================================================================
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+
 # Yubikey support
 export SSH_AUTH_SOCK=$HOME/.yubiagent/sock
