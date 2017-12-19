@@ -81,12 +81,6 @@ endif
 " ==============================================================================
 " Status Line
 " ==============================================================================
-function! GitBranch() abort                     " Fetch the Git branch of cwd
-    let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null
-                \ | tr -d '\n'")
-    return strlen(l:branchname) > 0 ? '#'.l:branchname : ''
-endfunction
-
 set laststatus=2                                " Enable the statusline
 set statusline=                                 " Initialize it
 set statusline+=%3*%m                           " Modified flag
@@ -122,6 +116,26 @@ nnoremap <silent> <leader>f :<C-u>edit ~/.dotfiles/<CR>
 nnoremap <silent> <leader>F :<C-u>tabnew ~/.dotfiles/<CR>
 " Emulate vim-vinegar
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+" Some notes/wiki shortcuts
+nnoremap <silent> <leader>ww :<C-u>edit ~/Documents/Wiki/index.md<CR>
+nnoremap <silent> <leader>ws :<C-u>vsplit ~/Documents/Wiki/scratchpad.md<CR>
+nnoremap <silent> <leader>wt :<C-u>vsplit ~/Documents/Wiki/to-do.md<CR>
+nnoremap <silent> <leader>wd :<C-u>edit ~/Documents/Wiki/diary/diary.wiki<CR>
+nnoremap <silent> <leader>tj :call NewJournal()<CR>
+" ==============================================================================
+" Functions
+" ==============================================================================
+" Read from the journal template, and replace 'Date' with today's date
+function! NewJournal() abort
+     .-1read ~/.vim/templates/journal
+     s/Date/\=strftime("%A, %B %d")/
+endfunction
+" Fetch the git branch of the current file, if applicable
+function! GitBranch() abort
+    let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null
+                \ | tr -d '\n'")
+    return strlen(l:branchname) > 0 ? '#'.l:branchname : ''
+endfunction
 " ==============================================================================
 " Plugins
 " ==============================================================================
