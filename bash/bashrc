@@ -6,6 +6,8 @@
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
+# Disable CTRL+S flow control
+stty -ixon
 #===============================================================================
 # Prompt
 #===============================================================================
@@ -102,4 +104,5 @@ export HISTTIMEFORMAT="%s "
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
 # Yubikey support
+# eval "$(ssh-agent -s)" &> /dev/null
 export SSH_AUTH_SOCK=$HOME/.yubiagent/sock
