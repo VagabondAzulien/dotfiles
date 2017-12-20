@@ -115,7 +115,10 @@ command! -nargs=1 -complete=help H :tabnew | :set buftype=help | :h <args>
 nnoremap <silent> <leader>f :<C-u>edit ~/.dotfiles/<CR>
 nnoremap <silent> <leader>F :<C-u>tabnew ~/.dotfiles/<CR>
 " Emulate vim-vinegar
-nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : 
+            \ expand('%:p:h')<CR><CR>
+" Send the select range to the specified pane
+command! -nargs=? -range Twrite execute TmuxWrite(<q-args>, <line1>, <line2>)
 " Some notes/wiki shortcuts
 nnoremap <silent> <leader>ww :<C-u>edit ~/Documents/Wiki/index.md<CR>
 nnoremap <silent> <leader>ws :<C-u>vsplit ~/Documents/Wiki/scratchpad.md<CR>
@@ -127,14 +130,43 @@ nnoremap <silent> <leader>tj :call NewJournal()<CR>
 " ==============================================================================
 " Read from the journal template, and replace 'Date' with today's date
 function! NewJournal() abort
-     .-1read ~/.vim/templates/journal
-     s/Date/\=strftime("%A, %B %d")/
+    .-1read ~/.vim/templates/journal
+    s/Date/\=strftime("%A, %B %d")/
 endfunction
 " Fetch the git branch of the current file, if applicable
 function! GitBranch() abort
     let l:branchname = system("git rev-parse --abbrev-ref HEAD 2>/dev/null
                 \ | tr -d '\n'")
     return strlen(l:branchname) > 0 ? '#'.l:branchname : ''
+endfunction
+" Simple tmux send-keys functionality
+function! TmuxWrite(pane, line1, line2) abort
+    let l:val = join(filter(map(getline(a:line1, a:line2),
+                \ 'substitute(v:val, "^\\s*", "", "")'),
+                \ "!empty(v:val)"),
+                \ "\r")
+    try
+        if empty(a:pane)
+            throw 'Twrite Failed: No pane provided'
+        endif
+        let l:panes = systemlist('tmux list-panes -t '.a:pane.' -F "#D
+                    \ #{pane_active}"')
+        let l:target = substitute(
+                    \join(filter(l:panes, 'match(v:val, ''%\d 1'') == 0'), ""),
+                    \'\(%\d\) 1', '\1', "")
+        if l:target ==# $TMUX_PANE
+            throw 'Twrite Failed: Not writing self'
+        endif
+        let l:out = system('tmux send-keys -t'.l:target.' "" '
+                    \.shellescape(l:val))
+        if v:shell_error
+            throw 'Twrite Failed: '.l:out[0:-2]
+        endif
+        echo len(l:val).' keys sent to '.a:pane
+        return ''
+    catch /.*/
+        return 'echoerr '.string(v:exception)
+    endtry
 endfunction
 " ==============================================================================
 " Plugins
