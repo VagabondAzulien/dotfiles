@@ -32,8 +32,10 @@ set scrolloff=5                                 " 5 line scroll buffer
 set foldmethod=indent                           " Fold on indent
 set foldlevelstart=99                           " No default folding
 
+set path+=**                                    " Recursive filename completion
 set wildmenu                                    " Enable wildmenu
-set wildmode:longest:full,full                  " Configure wildmenu
+set wildmode=list:longest:full                  " Configure wildmenu
+set wildignorecase                              " Ignore case for wildmenu
 set ignorecase smartcase                        " Ignore case, unless it matters
 set incsearch                                   " Zoom to results as I search
 set nohlsearch                                  " Disable search highlighting
@@ -125,6 +127,7 @@ nnoremap <silent> <leader>ws :<C-u>vsplit ~/Documents/Wiki/scratchpad.md<CR>
 nnoremap <silent> <leader>wt :<C-u>vsplit ~/Documents/Wiki/to-do.md<CR>
 nnoremap <silent> <leader>wd :<C-u>edit ~/Documents/Wiki/diary/diary.wiki<CR>
 nnoremap <silent> <leader>tj :call NewJournal()<CR>
+nnoremap <silent> <leader><Space> :<C-u>execute "normal! f(gf"<CR>
 " ==============================================================================
 " Functions
 " ==============================================================================
