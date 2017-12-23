@@ -47,8 +47,6 @@ function show_git_info(){
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
-# RVM
-PATH="$HOME/.rvm/bin:$PATH"
 # Custom stuff
 PATH="$HOME/bin:$PATH"
 # Add Python to path

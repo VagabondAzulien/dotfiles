@@ -77,8 +77,12 @@ function sojourner_tmux(){
 #===============================================================================
 # Path
 #===============================================================================
-# rbenv
-PATH="$HOME/.rbenv/bin:$PATH"
+# Ruby Gems
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+# Custom stuff
+PATH="$HOME/bin:$PATH"
 # Add Python to path
 PYTHONPATH="${PYTHONPATH}"
 export PYTHONPATH
