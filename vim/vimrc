@@ -18,10 +18,12 @@ set autoread                                    " Auto-reload modified files
 set hidden                                      " Allow for un-saved buffers
 set autochdir                                   " Change directory automatically
 
+set clipboard+=unnamed                          " Include the global buffer
+
 set autoindent                                  " Enable auto-indentation
 set expandtab                                   " Spaces for tab
-set shiftwidth=4                                " Spaces per shift
-set softtabstop=4                               " Spaces to use when editing
+set shiftwidth=2                                " Spaces per shift
+set softtabstop=2                               " Spaces to use when editing
 set listchars=tab:>-,trail:·                    " Show me tabs and spaces
 
 set number                                      " Enable line numbers
@@ -47,9 +49,20 @@ let g:netrw_banner=0                            " Disable the netrw banner
 augroup ruby_settings                           " Custom settings: Ruby{-like}
      autocmd!
      autocmd FileType ruby,eruby,yaml 
-                 \ setlocal shiftwidth=2 
-                 \          softtabstop=2
-                 \          makeprg=rubocop
+                 \ setlocal makeprg=rubocop
+augroup END
+
+augroup python_settings                         " Custom settings: Python-like
+    autocmd!
+    autocmd FileType py
+                 \ setlocal shiftwidth=4 
+                 \          softtabstop=4
+augroup END
+
+augroup shell_settings                          " Custom settings: Shell-like
+    autocmd!
+    autocmd FileType sh
+                 \ setlocal makeprg=shellcheck
 augroup END
 
 augroup spellcheckr                             " Spelling, for some files...
@@ -197,9 +210,3 @@ function! TmuxWrite(pane, line1, line2) abort
         return 'echoerr '.string(v:exception)
     endtry
 endfunction
-" ==============================================================================
-" Plugins
-" ==============================================================================
-if filereadable(expand('~/.vimrc-plugins'))
-    source ~/.vimrc-plugins
-endif
