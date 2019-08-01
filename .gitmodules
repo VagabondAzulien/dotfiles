@@ -1,0 +1,12 @@
+[submodule "vim/vim/pack/plugins/start/vim-fugitive"]
+	path = vim/vim/pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/vim/pack/plugins/start/vim-unimpaired"]
+	path = vim/vim/pack/plugins/start/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "vim/vim/pack/plugins/start/vim-commentary"]
+	path = vim/vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim/vim/pack/plugins/start/vim-polyglot"]
+	path = vim/vim/pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
