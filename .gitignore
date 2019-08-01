@@ -1,9 +1,5 @@
 #Local Gitignore for Repo#
 ##########################
 
-# Ignore Plug-related directories
-vim/vim/autoload
-vim/vim/bundle
-
 # Ignore undo files
 *.un~
