@@ -7,13 +7,11 @@
      build-simple \
      clean-all \
      install-vim-config \
-     install-vim-dir \
-     install-vim-plugin \
+     install-vim-plugins \
      install-git \
      install-tmux \
      install-bash-config \
      install-bash-profile \
-     install-irssi
 
 .DEFAULT-GOAL := help
 #===============================================================================
@@ -31,8 +29,7 @@ link-dotfiles:		## Create dotfiles link in Home directory
 build-default:		## Create default environment, using all dotfiles
 build-default: link-dotfiles \
     install-vim-config \
-    install-vim-dir \
-    install-vim-plugin \
+    install-vim-plugins \
     install-git \
     install-tmux \
     install-bash-config
@@ -56,16 +53,15 @@ install-vim-config:	## Create vimrc file and vim directory in Home directory
 	@if [ ! -d "$(HOME)"/.vim ] ; then \
 	    mkdir "$(HOME)"/.vim ; \
 	fi
-	@cp -uir -- "$(CURDIR)"/vim/vim/ "$(HOME)"/.vim/
+	@echo "Copying Vim directory into ~/.vim"
+	@cp -uir -- "$(CURDIR)"/vim/vim/* "$(HOME)"/.vim/
 
-install-vim-plugin:	## Create vimrc-plugins (Plugin file) in Home directory
-install-vim-plugin: install-vim-config
-	@if [ -L "$(HOME)"/.vimrc-plugins ] ; then \
-	    echo "File vimrc-plugins already linked; skipping." ; \
-	else \
-	    echo "Linking vimrc-plugins to ~/.vimrc-plugins" ; \
-	    ln -s -- "$(CURDIR)"/vim/vimrc-plugins "$(HOME)"/.vimrc-plugins ; \
-	fi
+install-vim-plugins:	## Install configure Vim plugin submodules
+install-vim-plugins: install-vim-config
+	@echo "Updating all submodules"
+	@git submodule foreach git pull origin master
+	@echo "Updating Vim helptags"
+	@vim -u NONE -c "helptags ALL" -c q
 
 install-git:		## Create git config and ignore files in Home directory
 	@cp -i -- "$(CURDIR)"/git/gitconfig "$(HOME)"/.gitconfig
