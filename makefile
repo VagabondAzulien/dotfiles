@@ -54,7 +54,7 @@ install-vim-config:	## Create vimrc file and vim directory in Home directory
 	    ln -s -- "$(CURDIR)"/vim/vimrc "$(HOME)"/.vimrc ; \
 	fi
 	@if [ ! -d "$(HOME)"/.vim ] ; then \
-	    mkdir "$(HOME)"/.vim \
+	    mkdir "$(HOME)"/.vim ; \
 	fi
 	@cp -uir -- "$(CURDIR)"/vim/vim/ "$(HOME)"/.vim/
 
