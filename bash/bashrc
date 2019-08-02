@@ -6,8 +6,34 @@
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
+#===============================================================================
+# Path
+#===============================================================================
+# Custom stuff
+PATH="$HOME/bin:$PATH"
+# Add Python to path
+PYTHONPATH="${PYTHONPATH}"
+export PYTHONPATH
+PATH="$PATH:/opt/python/bin"
+# Add Rust cargo bin
+PATH="$PATH:$HOME/.cargo/bin"
+# RVM. Make sure this is the last PATH variable change.
+PATH="$PATH:$HOME/.rvm/bin"
+# Set it.
+export PATH
+#===============================================================================
+# Defaults
+#===============================================================================
 # Disable CTRL+S flow control
 stty -ixon
+# Set editor, if Vim is available
+type vim >/dev/null 2>&1
+if [[ $? == 0 ]]; then
+    export EDITOR=vim
+fi
+# History size and time-format
+export HISTSIZE=10000
+export HISTTIMEFORMAT="%s "
 #===============================================================================
 # Prompt
 #===============================================================================
@@ -23,24 +49,9 @@ fi
 #===============================================================================
 # Aliases
 #===============================================================================
-alias tssh="source ~/.ssh/auth_ssh; ssh -A"
-complete -F _ssh tssh
 #===============================================================================
 # Functions
 #===============================================================================
-#If redshift wasn't automatically started, this will do it
-function tint(){
-    type redshift >/dev/null 2>&1
-    if [[ $? == 0 ]]; then
-        redshift -l 42.8864500:-78.8783700 -t 5000:4000 &
-    else
-        echo "Redshift not installed"
-    fi
-}
-# Function for keeping ssh-agent happy
-function yssh(){
-    echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" > ~/.ssh/auth_ssh
-}
 # Determine git branch and index status
 function show_git_info(){
     local results=""
@@ -66,47 +77,13 @@ function sojourner_tmux(){
         # If there is no session named Sojourner
         if [ $? != 0 ] ; then
              # Create a new session named Sojourner
-             tmux new-session -s Sojourner -d -c ~/
+             tmux new-session -s Sojourner -d
         fi
+        # Get our SSH socket documented
+        echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK" > ~/.ssh/auth_ssh
         # Attack to the Sojourner session
         tmux attach -t Sojourner
     else
         echo "Tmux not installed."
     fi
 }
-#===============================================================================
-# Path
-#===============================================================================
-# Ruby Gems
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-# Custom stuff
-PATH="$HOME/bin:$PATH"
-# Add Python to path
-PYTHONPATH="${PYTHONPATH}"
-export PYTHONPATH
-# RVM. Make sure this is the last PATH variable change.
-PATH="$PATH:$HOME/.rvm/bin"
-# Set it.
-export PATH
-#===============================================================================
-# Defaults
-#===============================================================================
-# Set editor, if Vim is available
-type vim >/dev/null 2>&1
-if [[ $? == 0 ]]; then
-    export EDITOR=vim
-fi
-# History size and time-format
-export HISTSIZE=10000
-export HISTTIMEFORMAT="%s "
-#===============================================================================
-# Random Shit often auto-added
-#===============================================================================
-# Hook for desk activation
-[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
-
-# Yubikey support
-# eval "$(ssh-agent -s)" &> /dev/null
-export SSH_AUTH_SOCK=$HOME/.yubiagent/sock
